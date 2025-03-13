@@ -175,7 +175,15 @@ export default function Home() {
       <section className="relative h-screen overflow-hidden">
         {/* Background Video */}
         <div className="absolute inset-0 w-full h-full z-0">
-          <video autoPlay loop muted className="w-full h-full object-cover">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback"
+            className="w-full h-full object-cover"
+          >
             <source src="/media/videos/background-video.mp4" type="video/mp4" />
           </video>
           {/* Overlay to darken video and make text more readable */}
