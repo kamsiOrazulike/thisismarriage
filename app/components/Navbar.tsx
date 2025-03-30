@@ -1,10 +1,16 @@
 "use client";
-
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 
-export default function Navbar() {
+// Define types for our navigation
+type PageType = "home" | "about" | "services" | "courses";
+
+interface NavbarProps {
+  currentPage: PageType;
+  onNavigate: (page: PageType) => void;
+}
+
+export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,15 +23,27 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavigation = (page: PageType) => {
+    onNavigate(page);
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#b08060]/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
+        isScrolled
+          ? "bg-[#b08060]/90 backdrop-blur-sm shadow-sm"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
+          <div
+            className="flex items-center cursor-pointer"
+            onClick={() => handleNavigation("home")}
+          >
             <Image
               src="/media/images/logo.svg"
               alt="ThisIsMarriage Logo"
@@ -33,13 +51,18 @@ export default function Navbar() {
               height={250}
               className="mr-2"
             />
-          </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <NavLinks isScrolled={isScrolled} />
-            <Link
-              href="/contact"
+            <NavLinks
+              isScrolled={isScrolled}
+              currentPage={currentPage}
+              onNavigate={handleNavigation}
+            />
+            <a
+              href="https://calendly.com/thisismarriageuk"
+              target="_blank"
               className={`px-5 py-2 rounded border-2 transition-colors ${
                 isScrolled
                   ? "border-white text-white hover:bg-white hover:text-black"
@@ -47,7 +70,7 @@ export default function Navbar() {
               }`}
             >
               Book a Session
-            </Link>
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -57,9 +80,7 @@ export default function Navbar() {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className={`h-6 w-6 ${
-                isScrolled ? "text-white" : "text-white"
-              }`}
+              className={`h-6 w-6 ${isScrolled ? "text-white" : "text-white"}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -88,13 +109,17 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg p-4">
           <div className="flex flex-col space-y-4">
-            <NavLinks isMobile={true} />
-            <Link
-              href="/contact"
+            <NavLinks
+              isMobile={true}
+              currentPage={currentPage}
+              onNavigate={handleNavigation}
+            />
+            <button
+              onClick={() => handleNavigation("courses")}
               className="px-5 py-2 rounded border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white text-center"
             >
               Book a Session
-            </Link>
+            </button>
           </div>
         </div>
       )}
@@ -102,27 +127,55 @@ export default function Navbar() {
   );
 }
 
-function NavLinks({ isScrolled = true, isMobile = false }) {
-  const linkClass = isMobile
-    ? "text-white/80 hover:text-white"
+interface NavLinksProps {
+  isScrolled?: boolean;
+  isMobile?: boolean;
+  currentPage: PageType;
+  onNavigate: (page: PageType) => void;
+}
+
+function NavLinks({
+  isScrolled = true,
+  isMobile = false,
+  currentPage,
+  onNavigate,
+}: NavLinksProps) {
+  const baseClass = isMobile
+    ? "text-gray-900 hover:text-gray-600"
     : isScrolled
     ? "text-white/80 hover:text-white"
     : "text-white/80 hover:text-white";
 
+  const activeClass = isMobile
+    ? "text-[#b08060] font-medium"
+    : "text-white font-medium";
+
   return (
     <>
-      <Link href="/" className={linkClass}>
+      <button
+        onClick={() => onNavigate("home")}
+        className={`${currentPage === "home" ? activeClass : baseClass}`}
+      >
         Home
-      </Link>
-      <Link href="/about" className={linkClass}>
+      </button>
+      <button
+        onClick={() => onNavigate("about")}
+        className={`${currentPage === "about" ? activeClass : baseClass}`}
+      >
         About
-      </Link>
-      <Link href="/courses" className={linkClass}>
+      </button>
+      <button
+        onClick={() => onNavigate("services")}
+        className={`${currentPage === "services" ? activeClass : baseClass}`}
+      >
+        Services
+      </button>
+      <button
+        onClick={() => onNavigate("courses")}
+        className={`${currentPage === "courses" ? activeClass : baseClass}`}
+      >
         Courses
-      </Link>
-      <Link href="/blog" className={linkClass}>
-        Blog
-      </Link>
+      </button>
     </>
   );
 }
