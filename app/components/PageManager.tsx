@@ -11,8 +11,7 @@ import {
   CoursesScreen,
 } from "./sections";
 
-// Type for our screens - exactly matching the Navbar component
-type PageType = "home" | "about" | "services" | "courses";
+export type PageType = "home" | "about" | "services" | "courses";
 
 const PageManager: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<PageType>("home");
@@ -83,9 +82,9 @@ const PageManager: React.FC = () => {
       <Navbar currentPage={currentScreen} onNavigate={changeScreen} />
 
       <main className="flex-grow">
-        {/* Home Screen */}
+        {/* Home Screen - Pass the changeScreen function */}
         <div className={`screen-home w-full`}>
-          <HomeScreen />
+          <HomeScreen onNavigate={changeScreen} />
         </div>
 
         {/* About Screen */}

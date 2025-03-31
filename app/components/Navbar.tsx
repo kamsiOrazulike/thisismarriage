@@ -34,7 +34,7 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#b08060]/90 backdrop-blur-sm shadow-sm"
+          ? "bg-[#271E19]/90 backdrop-blur-sm shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -45,10 +45,10 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
             onClick={() => handleNavigation("home")}
           >
             <Image
-              src="/media/images/logo.svg"
+              src="/media/images/logo.png"
               alt="ThisIsMarriage Logo"
-              width={250}
-              height={250}
+              width={180}
+              height={180}
               className="mr-2"
             />
           </div>
@@ -114,12 +114,13 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
               currentPage={currentPage}
               onNavigate={handleNavigation}
             />
-            <button
-              onClick={() => handleNavigation("courses")}
+            <a
+              href="https://calendly.com/thisismarriageuk"
+              target="_blank"
               className="px-5 py-2 rounded border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white text-center"
             >
               Book a Session
-            </button>
+            </a>
           </div>
         </div>
       )}
@@ -147,8 +148,8 @@ function NavLinks({
     : "text-white/80 hover:text-white";
 
   const activeClass = isMobile
-    ? "text-[#b08060] font-medium"
-    : "text-white font-medium";
+    ? "text-[#271E19] font-medium"
+    : "text-white font-bold";
 
   return (
     <>

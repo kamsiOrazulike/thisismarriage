@@ -2,8 +2,16 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import ScrollButton from "../ScrollButton";
+import Link from "next/link";
 
 const ServicesScreen: React.FC = () => {
+  const handleScrollDown = () => {
+    const nextSection = document.querySelector(".py-20.bg-white");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="bg-black">
       {/* Hero Section */}
@@ -21,7 +29,7 @@ const ServicesScreen: React.FC = () => {
         </div>
 
         <div className="pt-32 container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <div className="flex flex-col items-center text-center mb-16">
             <h1 className="font-serif text-3xl md:text-7xl font-medium mb-6 text-white">
               Our Services
             </h1>
@@ -29,6 +37,7 @@ const ServicesScreen: React.FC = () => {
               We offer a range of specialized therapy services designed to help
               couples at every stage of their relationship journey.
             </p>
+            <ScrollButton onClick={handleScrollDown} />
           </div>
         </div>
       </div>
@@ -59,7 +68,7 @@ const ServicesScreen: React.FC = () => {
               <ul className="text-gray-600 space-y-2 mb-8">
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -75,7 +84,7 @@ const ServicesScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -91,7 +100,7 @@ const ServicesScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -106,9 +115,13 @@ const ServicesScreen: React.FC = () => {
                   Rebuilding emotional intimacy
                 </li>
               </ul>
-              <button className="px-6 py-3 bg-[#b08060] text-white rounded hover:bg-[#a07050] transition-colors">
+              <Link
+                href="https://calendly.com/thisismarriageuk"
+                target="_blank"
+                className="px-6 py-3 bg-[#271E19] text-white rounded hover:bg-[#a07050] transition-colors"
+              >
                 Book Here
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -128,7 +141,7 @@ const ServicesScreen: React.FC = () => {
               <ul className="text-gray-600 space-y-2 mb-8">
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -144,7 +157,7 @@ const ServicesScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -160,7 +173,7 @@ const ServicesScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -175,9 +188,13 @@ const ServicesScreen: React.FC = () => {
                   Expert facilitation and guidance
                 </li>
               </ul>
-              <button className="px-6 py-3 bg-[#b08060] text-white rounded hover:bg-[#a07050] transition-colors">
+              <Link
+                href="https://calendly.com/thisismarriageuk"
+                target="_blank"
+                className="px-6 py-3 bg-[#271E19] text-white rounded hover:bg-[#a07050] transition-colors"
+              >
                 Book Here
-              </button>
+              </Link>
             </div>
             <div className="relative h-96 w-full order-1 md:order-2">
               <Image
@@ -214,7 +231,7 @@ const ServicesScreen: React.FC = () => {
               <ul className="text-gray-600 space-y-2 mb-8">
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -230,7 +247,7 @@ const ServicesScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -246,7 +263,7 @@ const ServicesScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -261,9 +278,13 @@ const ServicesScreen: React.FC = () => {
                   Conflict resolution skills
                 </li>
               </ul>
-              <button className="px-6 py-3 bg-[#b08060] text-white rounded hover:bg-[#a07050] transition-colors">
+              <Link
+                href="https://calendly.com/thisismarriageuk/pre-marital-coaching-session"
+                target="_blank"
+                className="px-6 py-3 bg-[#271E19] text-white rounded hover:bg-[#a07050] transition-colors"
+              >
                 Book Here
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -283,7 +304,7 @@ const ServicesScreen: React.FC = () => {
               <ul className="text-gray-600 space-y-2 mb-8">
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -299,7 +320,7 @@ const ServicesScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -315,7 +336,7 @@ const ServicesScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -330,9 +351,13 @@ const ServicesScreen: React.FC = () => {
                   Community building
                 </li>
               </ul>
-              <button className="px-6 py-3 bg-[#b08060] text-white rounded hover:bg-[#a07050] transition-colors">
-                Learn More
-              </button>
+              <Link
+                href="https://calendly.com/thisismarriageuk/free-10-minute-consultation"
+                target="_blank"
+                className="px-6 py-3 bg-[#271E19] text-white rounded hover:bg-[#a07050] transition-colors"
+              >
+                Schedule
+              </Link>
             </div>
             <div className="relative h-96 w-full order-1 md:order-2">
               <Image
@@ -405,7 +430,7 @@ const ServicesScreen: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-20 bg-[#b08060] text-white text-center">
+      <div className="py-20 bg-[#271E19] text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="font-serif text-4xl font-medium mb-6">
             Ready to Strengthen Your Relationship?

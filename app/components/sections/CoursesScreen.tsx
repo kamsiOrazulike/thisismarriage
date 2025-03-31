@@ -2,8 +2,15 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import ScrollButton from "../ScrollButton";
 
 const CoursesScreen: React.FC = () => {
+  const handleScrollDown = () => {
+    const nextSection = document.querySelector(".py-20.bg-white");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="bg-black">
       {/* Hero Section */}
@@ -21,7 +28,7 @@ const CoursesScreen: React.FC = () => {
         </div>
 
         <div className="pt-32 container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <div className="flex flex-col items-center text-center mb-16">
             <h1 className="font-serif text-3xl md:text-7xl font-medium mb-6 text-white">
               Our Courses
             </h1>
@@ -29,6 +36,7 @@ const CoursesScreen: React.FC = () => {
               Discover our specialized courses designed to strengthen
               relationships at every stage
             </p>
+            <ScrollButton onClick={handleScrollDown} />
           </div>
         </div>
       </div>
@@ -53,7 +61,7 @@ const CoursesScreen: React.FC = () => {
               </div>
               <div className="p-8">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="bg-[#b08060]/20 text-[#b08060] px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-[#271E19]/20 text-[#271E19] px-3 py-1 rounded-full text-sm font-medium">
                     6-Week Course
                   </span>
                   <span className="font-medium text-gray-900">$249</span>
@@ -70,7 +78,7 @@ const CoursesScreen: React.FC = () => {
                 <div className="space-y-2 mb-6">
                   <div className="flex items-start">
                     <svg
-                      className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                      className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -88,7 +96,7 @@ const CoursesScreen: React.FC = () => {
                   </div>
                   <div className="flex items-start">
                     <svg
-                      className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                      className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -104,7 +112,7 @@ const CoursesScreen: React.FC = () => {
                   </div>
                   <div className="flex items-start">
                     <svg
-                      className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                      className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -121,7 +129,7 @@ const CoursesScreen: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <button className="w-full py-3 bg-[#b08060] text-white rounded hover:bg-[#a07050] transition-colors">
+                <button className="w-full py-3 bg-[#271E19] text-white rounded hover:bg-[#a07050] transition-colors">
                   Learn More
                 </button>
               </div>
@@ -139,7 +147,7 @@ const CoursesScreen: React.FC = () => {
               </div>
               <div className="p-8">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="bg-[#b08060]/20 text-[#b08060] px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-[#271E19]/20 text-[#271E19] px-3 py-1 rounded-full text-sm font-medium">
                     8-Week Course
                   </span>
                   <span className="font-medium text-gray-900">$349</span>
@@ -156,7 +164,7 @@ const CoursesScreen: React.FC = () => {
                 <div className="space-y-2 mb-6">
                   <div className="flex items-start">
                     <svg
-                      className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                      className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -174,7 +182,7 @@ const CoursesScreen: React.FC = () => {
                   </div>
                   <div className="flex items-start">
                     <svg
-                      className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                      className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -192,7 +200,7 @@ const CoursesScreen: React.FC = () => {
                   </div>
                   <div className="flex items-start">
                     <svg
-                      className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                      className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -209,7 +217,7 @@ const CoursesScreen: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <button className="w-full py-3 bg-[#b08060] text-white rounded hover:bg-[#a07050] transition-colors">
+                <button className="w-full py-3 bg-[#271E19] text-white rounded hover:bg-[#a07050] transition-colors">
                   Learn More
                 </button>
               </div>
@@ -236,8 +244,8 @@ const CoursesScreen: React.FC = () => {
                   relationship with practical tools and guidance.
                 </p>
                 <div className="flex justify-between items-center mt-4">
-                  <span className="text-[#b08060] font-medium">$199</span>
-                  <button className="px-4 py-2 bg-[#b08060] text-white rounded text-sm hover:bg-[#a07050] transition-colors">
+                  <span className="text-[#271E19] font-medium">$199</span>
+                  <button className="px-4 py-2 bg-[#271E19] text-white rounded text-sm hover:bg-[#a07050] transition-colors">
                     Details
                   </button>
                 </div>
@@ -263,8 +271,8 @@ const CoursesScreen: React.FC = () => {
                   effective communication techniques.
                 </p>
                 <div className="flex justify-between items-center mt-4">
-                  <span className="text-[#b08060] font-medium">$179</span>
-                  <button className="px-4 py-2 bg-[#b08060] text-white rounded text-sm hover:bg-[#a07050] transition-colors">
+                  <span className="text-[#271E19] font-medium">$179</span>
+                  <button className="px-4 py-2 bg-[#271E19] text-white rounded text-sm hover:bg-[#a07050] transition-colors">
                     Details
                   </button>
                 </div>
@@ -290,8 +298,8 @@ const CoursesScreen: React.FC = () => {
                   makes relationships thrive.
                 </p>
                 <div className="flex justify-between items-center mt-4">
-                  <span className="text-[#b08060] font-medium">$149</span>
-                  <button className="px-4 py-2 bg-[#b08060] text-white rounded text-sm hover:bg-[#a07050] transition-colors">
+                  <span className="text-[#271E19] font-medium">$149</span>
+                  <button className="px-4 py-2 bg-[#271E19] text-white rounded text-sm hover:bg-[#a07050] transition-colors">
                     Details
                   </button>
                 </div>
@@ -312,7 +320,7 @@ const CoursesScreen: React.FC = () => {
             {/* Workshop 1 */}
             <div className="bg-white rounded-lg overflow-hidden shadow-md p-6">
               <div className="mb-4">
-                <span className="bg-[#b08060]/20 text-[#b08060] px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-[#271E19]/20 text-[#271E19] px-3 py-1 rounded-full text-sm font-medium">
                   May 15, 2025
                 </span>
               </div>
@@ -324,10 +332,10 @@ const CoursesScreen: React.FC = () => {
                 connection and revitalize their relationship.
               </p>
               <div className="flex justify-between items-center mt-4">
-                <span className="text-[#b08060] font-medium">
+                <span className="text-[#271E19] font-medium">
                   $399 per couple
                 </span>
-                <button className="px-4 py-2 bg-[#b08060] text-white rounded hover:bg-[#a07050] transition-colors">
+                <button className="px-4 py-2 bg-[#271E19] text-white rounded hover:bg-[#a07050] transition-colors">
                   Register
                 </button>
               </div>
@@ -336,7 +344,7 @@ const CoursesScreen: React.FC = () => {
             {/* Workshop 2 */}
             <div className="bg-white rounded-lg overflow-hidden shadow-md p-6">
               <div className="mb-4">
-                <span className="bg-[#b08060]/20 text-[#b08060] px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-[#271E19]/20 text-[#271E19] px-3 py-1 rounded-full text-sm font-medium">
                   June 8, 2025
                 </span>
               </div>
@@ -348,10 +356,10 @@ const CoursesScreen: React.FC = () => {
                 communication techniques for couples at any stage.
               </p>
               <div className="flex justify-between items-center mt-4">
-                <span className="text-[#b08060] font-medium">
+                <span className="text-[#271E19] font-medium">
                   $199 per couple
                 </span>
-                <button className="px-4 py-2 bg-[#b08060] text-white rounded hover:bg-[#a07050] transition-colors">
+                <button className="px-4 py-2 bg-[#271E19] text-white rounded hover:bg-[#a07050] transition-colors">
                   Register
                 </button>
               </div>
@@ -378,7 +386,7 @@ const CoursesScreen: React.FC = () => {
                 to develop a customized curriculum that addresses your
                 particular needs and goals.
               </p>
-              <button className="px-8 py-3 bg-[#b08060] text-white rounded hover:bg-[#a07050] transition-colors inline-block">
+              <button className="px-8 py-3 bg-[#271E19] text-white rounded hover:bg-[#a07050] transition-colors inline-block">
                 Contact Us for Details
               </button>
             </div>
@@ -387,7 +395,7 @@ const CoursesScreen: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-20 bg-[#b08060] text-white text-center">
+      <div className="py-20 bg-[#271E19] text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="font-serif text-4xl font-medium mb-6">
             Ready to Transform Your Relationship?

@@ -3,8 +3,16 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import ScrollButton from "../ScrollButton";
 
 const AboutScreen: React.FC = () => {
+  const handleScrollDown = () => {
+    const nextSection = document.querySelector(".py-20.bg-white");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="bg-black">
       {/* Hero Section */}
@@ -21,8 +29,8 @@ const AboutScreen: React.FC = () => {
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
-        <div className="pt-32 container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+        <div className="pt-32 pb-12 container mx-auto px-4 relative z-10">
+          <div className="flex flex-col items-center text-center mb-16">
             <h1 className="font-serif text-3xl md:text-7xl font-medium mb-6 text-white">
               About ThisIsMarriageUK
             </h1>
@@ -30,59 +38,51 @@ const AboutScreen: React.FC = () => {
               Unfiltered conversations about marriage - That's the essence of
               'This is Marriage.'
             </p>
+            <ScrollButton onClick={handleScrollDown} />
           </div>
+        </div>
+      </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="relative h-72 w-full mb-6 md:hidden">
-                <Image
-                  src="/media/images/founders.jpg"
-                  alt="Curtis and Wanitta Powell"
-                  fill
-                  style={{ objectFit: "cover" }}
-                  className="rounded-lg"
-                />
-              </div>
-              <p className="text-white mb-6 leading-relaxed">
-                We are Curtis and Wanitta Powell, married since 2001, and our
-                journey into This is Marriage began with a simple social media
-                share on our 15th anniversary in 2016. Little did we know, our
-                candid conversations about the realities of marriage would
-                strike such a profound chord. Our open and honest discussions
-                challenged conventional wisdom, diving deep into the human
-                dynamics that shape relationships.
-              </p>
-              <p className="text-white mb-6 leading-relaxed">
-                We soon found ourselves creating content for YouTube, Facebook,
-                and Instagram Live, sharing our unvarnished perspectives on
-                love, intimacy, and the beautiful complexities that come with
-                long-term commitment. Our intention is to strengthen marriages
-                by sharing our lived experiences and perspectives, because we're
-                all going through it together.
-              </p>
-              <p className="text-white leading-relaxed">
-                But we don't just cater to married couples - we also aim to help
-                singles to prepare for relationships on the best footing
-                possible.
-              </p>
-            </div>
-            <div className="relative hidden md:block">
-              <div className="aspect-w-4 aspect-h-5 relative">
-                <Image
-                  src="/media/images/founders.jpg"
-                  alt="Curtis and Wanitta Powell"
-                  fill
-                  style={{ objectFit: "cover" }}
-                  className="rounded-lg"
-                />
-              </div>
-            </div>
+      {/* Who we are Section */}
+      <div className="py-20 bg-white px-4 md:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="relative h-96 w-full order-2 md:order-1">
+            <Image
+              src="/media/images/thepowells.png"
+              alt="Curtis and Wanitta Powell"
+              fill
+              style={{ objectFit: "cover" }}
+              className="rounded-lg"
+            />
+          </div>
+          <div className="flex flex-col order-1 md:order-2">
+            <p className="text-black mt-4 mb-6 leading-relaxed">
+              We are Curtis and Wanitta Powell, married since 2001, and our
+              journey into This is Marriage began with a simple social media
+              share on our 15th anniversary in 2016. Little did we know, our
+              candid conversations about the realities of marriage would strike
+              such a profound chord. Our open and honest discussions challenged
+              conventional wisdom, diving deep into the human dynamics that
+              shape relationships.
+            </p>
+            <p className="text-black mb-6 leading-relaxed">
+              We soon found ourselves creating content for YouTube, Facebook,
+              and Instagram Live, sharing our unvarnished perspectives on love,
+              intimacy, and the beautiful complexities that come with long-term
+              commitment. Our intention is to strengthen marriages by sharing
+              our lived experiences and perspectives, because we're all going
+              through it together.
+            </p>
+            <p className="text-black leading-relaxed">
+              But we don't just cater to married couples - we also aim to help
+              singles to prepare for relationships on the best footing possible.
+            </p>
           </div>
         </div>
       </div>
 
       {/* Our Approach Section */}
-      <div className="py-20 bg-white">
+      <div className="py-20 bg-white px-16">
         <div className="container mx-auto px-4">
           <h2 className="font-serif text-4xl font-medium mb-12 text-center text-gray-900">
             Our Philosophy
@@ -174,7 +174,7 @@ const AboutScreen: React.FC = () => {
               <ul className="text-gray-600 space-y-2">
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -190,7 +190,7 @@ const AboutScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -206,7 +206,7 @@ const AboutScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -235,7 +235,7 @@ const AboutScreen: React.FC = () => {
               <ul className="text-gray-600 space-y-2">
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -251,7 +251,7 @@ const AboutScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -267,7 +267,7 @@ const AboutScreen: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <svg
-                    className="h-5 w-5 text-[#b08060] mr-2 mt-0.5 flex-shrink-0"
+                    className="h-5 w-5 text-[#271E19] mr-2 mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -314,7 +314,7 @@ const AboutScreen: React.FC = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="py-20 bg-[#b08060] text-white text-center">
+      <div className="py-20 bg-[#271E19] text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="font-serif text-4xl font-medium mb-6">
             Ready to Transform Your Relationship?

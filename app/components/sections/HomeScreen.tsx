@@ -1,22 +1,28 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import React, { useEffect, useRef } from "react";
-import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import Card from "../Cards";
+import { PageType } from "../PageManager";
+import ScrollButton from "../ScrollButton";
 
-const HomeScreen: React.FC = () => {
+interface HomeScreenProps {
+  onNavigate?: (screen: PageType) => void;
+}
+
+const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
   // Refs for hero section
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
   const heroDescRef = useRef<HTMLParagraphElement>(null);
-  const heroButtonRef = useRef<HTMLButtonElement>(null);
+  const heroButtonRef = useRef<HTMLDivElement>(null); // Changed to div as ScrollButton is a div
 
   // Refs for other sections
   const aboutSectionRef = useRef<HTMLElement>(null);
   const aboutTitleRef = useRef<HTMLHeadingElement>(null);
   const aboutTextRef = useRef<HTMLDivElement>(null);
-  const aboutButtonRef = useRef<HTMLAnchorElement>(null);
+  const aboutButtonRef = useRef<HTMLButtonElement>(null);
   const aboutImageRef = useRef<HTMLDivElement>(null);
 
   const servicesRef = useRef<HTMLElement>(null);
@@ -25,7 +31,7 @@ const HomeScreen: React.FC = () => {
 
   const testimonialsRef = useRef<HTMLElement>(null);
   const testimonialsTitleRef = useRef<HTMLHeadingElement>(null);
-  const testimonialsQuoteRef = useRef<HTMLQuoteElement>(null);
+  const testimonialsQuoteRef = useRef<HTMLDivElement>(null);
   const testimonialsAuthorRef = useRef<HTMLDivElement>(null);
 
   const ctaRef = useRef<HTMLElement>(null);
@@ -36,20 +42,29 @@ const HomeScreen: React.FC = () => {
   useEffect(() => {
     // Register GSAP plugins
     if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+      try {
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+      } catch (error) {
+        console.error("Failed to register GSAP plugins:", error);
+        return; // Exit early if plugin registration fails
+      }
     }
 
     // Initial animation for hero content
     const heroTl = gsap.timeline();
 
-    heroTl
-      .from(heroTitleRef.current, {
+    // Only add animations if the refs are valid
+    if (heroTitleRef.current) {
+      heroTl.from(heroTitleRef.current, {
         opacity: 0,
         y: 30,
         duration: 1.2,
         ease: "power3.out",
-      })
-      .from(
+      });
+    }
+
+    if (heroDescRef.current) {
+      heroTl.from(
         heroDescRef.current,
         {
           opacity: 0,
@@ -58,8 +73,11 @@ const HomeScreen: React.FC = () => {
           ease: "power3.out",
         },
         "-=0.5"
-      )
-      .from(
+      );
+    }
+
+    if (heroButtonRef.current) {
+      heroTl.from(
         heroButtonRef.current,
         {
           opacity: 0,
@@ -69,11 +87,17 @@ const HomeScreen: React.FC = () => {
         },
         "-=0.3"
       );
+    }
 
-    // About section animations
-    gsap.from(
-      [aboutTitleRef.current, aboutTextRef.current, aboutButtonRef.current],
-      {
+    // About section animations - with null checks
+    const aboutElements = [
+      aboutTitleRef.current,
+      aboutTextRef.current,
+      aboutButtonRef.current,
+    ].filter(Boolean); // Filter out any null elements
+
+    if (aboutElements.length > 0 && aboutSectionRef.current) {
+      gsap.from(aboutElements, {
         opacity: 0,
         y: 30,
         stagger: 0.2,
@@ -83,33 +107,41 @@ const HomeScreen: React.FC = () => {
           trigger: aboutSectionRef.current,
           start: "top 70%",
         },
-      }
-    );
+      });
+    }
 
-    gsap.from(aboutImageRef.current, {
-      opacity: 0,
-      x: 30,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: aboutSectionRef.current,
-        start: "top 70%",
-      },
-    });
+    if (aboutImageRef.current && aboutSectionRef.current) {
+      gsap.from(aboutImageRef.current, {
+        opacity: 0,
+        x: 30,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: aboutSectionRef.current,
+          start: "top 70%",
+        },
+      });
+    }
 
-    // Services section animations
-    gsap.from(servicesTitleRef.current, {
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: servicesRef.current,
-        start: "top 70%",
-      },
-    });
+    // Services section animations - with null checks
+    if (servicesTitleRef.current && servicesRef.current) {
+      gsap.from(servicesTitleRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: servicesRef.current,
+          start: "top 70%",
+        },
+      });
+    }
 
-    if (servicesCardsRef.current) {
+    if (
+      servicesCardsRef.current &&
+      servicesCardsRef.current.children.length > 0 &&
+      servicesRef.current
+    ) {
       gsap.from(servicesCardsRef.current.children, {
         opacity: 0,
         y: 40,
@@ -123,58 +155,97 @@ const HomeScreen: React.FC = () => {
       });
     }
 
-    // Testimonials section animations
-    gsap.from(testimonialsTitleRef.current, {
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: testimonialsRef.current,
-        start: "top 70%",
-      },
-    });
+    // Testimonials section animations - with null checks
+    if (testimonialsTitleRef.current && testimonialsRef.current) {
+      gsap.from(testimonialsTitleRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: testimonialsRef.current,
+          start: "top 70%",
+        },
+      });
+    }
 
-    gsap.from([testimonialsQuoteRef.current, testimonialsAuthorRef.current], {
-      opacity: 0,
-      y: 30,
-      stagger: 0.2,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: testimonialsRef.current,
-        start: "top 60%",
-      },
-    });
+    const testimonialElements = [
+      testimonialsQuoteRef.current,
+      testimonialsAuthorRef.current,
+    ].filter(Boolean);
 
-    // CTA section animations
-    gsap.from([ctaTitleRef.current, ctaTextRef.current, ctaButtonRef.current], {
-      opacity: 0,
-      y: 30,
-      stagger: 0.2,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ctaRef.current,
-        start: "top 70%",
-      },
-    });
+    if (testimonialElements.length > 0 && testimonialsRef.current) {
+      gsap.from(testimonialElements, {
+        opacity: 0,
+        y: 30,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: testimonialsRef.current,
+          start: "top 60%",
+        },
+      });
+    }
+
+    // CTA section animations - with null checks
+    const ctaElements = [
+      ctaTitleRef.current,
+      ctaTextRef.current,
+      ctaButtonRef.current,
+    ].filter(Boolean);
+
+    if (ctaElements.length > 0 && ctaRef.current) {
+      gsap.from(ctaElements, {
+        opacity: 0,
+        y: 30,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: "top 70%",
+        },
+      });
+    }
 
     // Clean up ScrollTrigger on component unmount
     return () => {
       if (typeof window !== "undefined") {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
+        try {
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
+        } catch (error) {
+          console.error("Error cleaning up ScrollTrigger:", error);
+        }
       }
     };
   }, []);
 
   // Function to handle scroll down
   const handleScrollDown = () => {
-    gsap.to(window, {
-      duration: 1,
-      scrollTo: { y: aboutSectionRef.current || 0, offsetY: 50 },
-      ease: "power3.inOut",
-    });
+    if (!aboutSectionRef.current) return;
+
+    try {
+      gsap.to(window, {
+        duration: 1,
+        scrollTo: { y: aboutSectionRef.current, offsetY: 50 },
+        ease: "power3.inOut",
+      });
+    } catch (error) {
+      console.error("Error in scrolling:", error);
+      // Fallback for scrolling if GSAP fails
+      aboutSectionRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  // Function to handle navigation to about screen
+  const handleNavigateToAbout = () => {
+    if (onNavigate) {
+      onNavigate("about");
+    }
   };
 
   return (
@@ -200,44 +271,24 @@ const HomeScreen: React.FC = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 flex items-center justify-center h-full text-white text-center px-4">
-          <div className="max-w-4xl flex flex-col items-center">
+          <div className="max-w-4xl md:mt-24 flex flex-col items-center">
             <h1
               ref={heroTitleRef}
-              className="font-serif text-5xl md:text-7xl font-medium mb-6"
+              className="font-serif text-3xl md:text-4xl font-medium mb-2"
             >
               CAPTURING MOMENTS IN YOUR RELATIONSHIP
             </h1>
             <p
               ref={heroDescRef}
-              className="text-xl md:text-2xl max-w-3xl mx-auto mb-10"
+              className="text-md md:text-xl font-light max-w-3xl mx-auto mb-10"
             >
-              Building stronger connections through professional couples therapy
+              We support marriages in crisis, prepare couples for marriage, and
+              guide singles seeking healthy partnerships. We'll help you
+              navigate any relationship stage with confidence.
             </p>
-            <button
-              ref={heroButtonRef}
-              onClick={handleScrollDown}
-              className="flex flex-col items-center gap-2 mt-6 group"
-            >
-              <span className="text-white text-sm font-medium tracking-wider">
-                SCROLL DOWN
-              </span>
-              <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                  />
-                </svg>
-              </div>
-            </button>
+            <div ref={heroButtonRef}>
+              <ScrollButton onClick={handleScrollDown} />
+            </div>
           </div>
         </div>
       </section>
@@ -267,13 +318,14 @@ const HomeScreen: React.FC = () => {
                   of time.
                 </p>
               </div>
-              <Link
-                href="#" // This will be updated to the proper route
+              {/* Changed from Link to button */}
+              <button
                 ref={aboutButtonRef}
+                onClick={handleNavigateToAbout}
                 className="inline-block px-6 py-2 border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors font-medium"
               >
                 LEARN MORE
-              </Link>
+              </button>
             </div>
             <div ref={aboutImageRef} className="relative">
               <div className="aspect-w-4 aspect-h-5 relative">
@@ -288,7 +340,7 @@ const HomeScreen: React.FC = () => {
       </section>
 
       {/* Services Preview */}
-      <section ref={servicesRef} className="py-20 bg-[#b08060] text-white">
+      <section ref={servicesRef} className="py-20 bg-[#271E19] text-white">
         <div className="container mx-auto px-4">
           <h2
             ref={servicesTitleRef}
@@ -300,17 +352,30 @@ const HomeScreen: React.FC = () => {
             ref={servicesCardsRef}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            <ServiceCard
+            {/* Using Card components for services */}
+            <Card
+              variant="feature"
               title="Couples Therapy"
               description="Navigate challenges together through evidence-based therapeutic approaches tailored to your relationship."
+              aspectRatio="square"
+              imageSrc="/media/images/service-couples.jpg"
+              imageAlt="Couples Therapy"
             />
-            <ServiceCard
+            <Card
+              variant="feature"
               title="Premarital Counseling"
               description="Build a strong foundation for your marriage by addressing potential issues before they arise."
+              aspectRatio="square"
+              imageSrc="/media/images/service-premarital.jpg"
+              imageAlt="Premarital Counseling"
             />
-            <ServiceCard
+            <Card
+              variant="feature"
               title="Relationship Renewal"
               description="Reignite the spark in your relationship and rediscover the connection that brought you together."
+              aspectRatio="square"
+              imageSrc="/media/images/service-renewal.jpg"
+              imageAlt="Relationship Renewal"
             />
           </div>
         </div>
@@ -326,24 +391,18 @@ const HomeScreen: React.FC = () => {
             SUCCESS STORIES
           </h2>
           <div className="max-w-4xl mx-auto">
-            <blockquote
-              ref={testimonialsQuoteRef}
-              className="text-xl text-gray-600 text-center italic mb-8"
-            >
-              "The therapy sessions with ThisIsMarriage completely transformed
-              our relationship. We learned to communicate effectively and
-              understand each other on a deeper level. We're more connected now
-              than we've ever been."
-            </blockquote>
-            <div
-              ref={testimonialsAuthorRef}
-              className="flex items-center justify-center"
-            >
-              <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-300 mr-4"></div>
-              <div>
-                <p className="font-medium text-gray-900">Michael & Sarah</p>
-                <p className="text-gray-500">Together for 7 years</p>
-              </div>
+            {/* Using Card component for testimonial */}
+            <div ref={testimonialsQuoteRef}>
+              <Card
+                variant="testimonial"
+                title=""
+                description="The therapy sessions with ThisIsMarriage completely transformed our relationship. We learned to communicate effectively and understand each other on a deeper level. We're more connected now than we've ever been."
+                author="Michael & Sarah"
+                subtitle="Together for 7 years"
+              />
+            </div>
+            <div ref={testimonialsAuthorRef} className="hidden">
+              {/* This ref is kept for animation but hidden since we're using the Card component now */}
             </div>
           </div>
         </div>
@@ -352,7 +411,7 @@ const HomeScreen: React.FC = () => {
       {/* Contact CTA */}
       <section
         ref={ctaRef}
-        className="py-20 bg-[#b08060] text-white text-center"
+        className="py-20 bg-[#271E19] text-white text-center"
       >
         <div className="container mx-auto px-4">
           <h2
@@ -365,35 +424,19 @@ const HomeScreen: React.FC = () => {
             Take the first step toward a more fulfilling partnership. Schedule a
             consultation today.
           </p>
-          <Link
+          <a
             href="https://calendly.com/thisismarriageuk"
             target="_blank"
+            rel="noopener noreferrer"
             ref={ctaButtonRef}
             className="px-8 py-3 bg-white text-gray-900 hover:bg-gray-100 rounded-sm text-lg font-medium transition-colors"
           >
             Get Started
-          </Link>
+          </a>
         </div>
       </section>
     </>
   );
 };
-
-interface ServiceCardProps {
-  title: string;
-  description: string;
-}
-
-function ServiceCard({ title, description }: ServiceCardProps) {
-  return (
-    <div className="group">
-      <div className="aspect-w-1 aspect-h-1 mb-4 overflow-hidden">
-        <div className="w-full h-full bg-gray-200"></div>
-      </div>
-      <h3 className="font-serif text-xl font-bold mb-2 text-white">{title}</h3>
-      <p className="text-white">{description}</p>
-    </div>
-  );
-}
 
 export default HomeScreen;

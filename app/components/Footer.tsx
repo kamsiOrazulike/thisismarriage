@@ -19,10 +19,10 @@ export default function Footer({ onNavigate }: FooterProps) {
               onClick={() => onNavigate("home")}
             >
               <Image
-                src="/media/images/logo.svg"
+                src="/media/images/logo.png"
                 alt="ThisIsMarriage Logo"
-                width={300}
-                height={300}
+                width={180}
+                height={180}
                 className="invert"
               />
             </div>
@@ -55,15 +55,12 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           <div>
-            <h3 className="font-serif text-lg font-medium text-gray-900 mb-4">
-              Contact Info
+            <h3 className="font-serif text-lg font-medium text-gray-900 mb-2">
+              Get in Touch
             </h3>
             <address className="not-italic text-gray-600 space-y-2">
-              <p>123 Therapy Lane</p>
-              <p>Suite 456</p>
-              <p>Relationship City, RC 98765</p>
               <p className="pt-2">contact@thisismarriage.com</p>
-              <p>(555) 123-4567</p>
+              <p>(+44) 123 4567 899</p>
             </address>
           </div>
         </div>
