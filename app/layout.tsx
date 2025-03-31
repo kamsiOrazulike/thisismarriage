@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ThisIsMarriage - Couples Therapy",
+  title: "This is Marriage UK",
   description: "Support for couples seeking to strengthen their relationship",
 };
 
