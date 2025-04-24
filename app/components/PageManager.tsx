@@ -8,10 +8,11 @@ import {
   HomeScreen,
   AboutScreen,
   ServicesScreen,
-  CoursesScreen,
+  ProductsScreen,
+  TestimonialsScreen,
 } from "./sections";
 
-export type PageType = "home" | "about" | "services" | "courses";
+export type PageType = "home" | "about" | "services" | "products" | "testimonials" | "courses";
 
 const PageManager: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<PageType>("home");
@@ -69,17 +70,17 @@ const PageManager: React.FC = () => {
     // Show only the current screen initially
     gsap.set(`.screen-${currentScreen}`, { opacity: 1, display: "block" });
 
-    const allScreens: PageType[] = ["home", "about", "services", "courses"];
+    const allScreens: PageType[] = ["home", "about", "services", "products", "testimonials"];
     allScreens.forEach((screen) => {
       if (screen !== currentScreen) {
         gsap.set(`.screen-${screen}`, { opacity: 0, display: "none" });
       }
     });
-  }, []);
+  }, [currentScreen]); // Added currentScreen as a dependency
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar currentPage={currentScreen} onNavigate={changeScreen} />
+      <Navbar />
 
       <main className="flex-grow">
         {/* Home Screen - Pass the changeScreen function */}
@@ -97,9 +98,14 @@ const PageManager: React.FC = () => {
           <ServicesScreen />
         </div>
 
-        {/* Courses Screen */}
-        <div className={`screen-courses w-full`}>
-          <CoursesScreen />
+        {/* Products Screen */}
+        <div className={`screen-products w-full`}>
+          <ProductsScreen />
+        </div>
+
+        {/* Testimonials Screen */}
+        <div className={`screen-testimonials w-full`}>
+          <TestimonialsScreen />
         </div>
       </main>
 

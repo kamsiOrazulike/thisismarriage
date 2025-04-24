@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import React from "react";
@@ -57,25 +56,13 @@ const AboutScreen: React.FC = () => {
           </div>
           <div className="flex flex-col order-1 md:order-2">
             <p className="text-black mt-4 mb-6 leading-relaxed">
-              We are Curtis and Wanitta Powell, married since 2001, and our
-              journey into This is Marriage began with a simple social media
-              share on our 15th anniversary in 2016. Little did we know, our
-              candid conversations about the realities of marriage would strike
-              such a profound chord. Our open and honest discussions challenged
-              conventional wisdom, diving deep into the human dynamics that
-              shape relationships.
+              We are Curtis and Wanitta Powell, married since 2001, and let’s be real—marriage is a beautiful yet challenging journey. This is Marriage started back in 2016 with a simple social media post on our 15th anniversary. We were honestly reflecting on our journey on camera, and instantly, people became engaged.
             </p>
             <p className="text-black mb-6 leading-relaxed">
-              We soon found ourselves creating content for YouTube, Facebook,
-              and Instagram Live, sharing our unvarnished perspectives on love,
-              intimacy, and the beautiful complexities that come with long-term
-              commitment. Our intention is to strengthen marriages by sharing
-              our lived experiences and perspectives, because we're all going
-              through it together.
+              We learned that the honest, messy, and valuable parts of marriage we were talking about were exactly what so many couples and singles needed to hear. We listened to the feedback and took our conversations to YouTube, Facebook, and Instagram Live, diving into real talk about love, intimacy, and the everyday realities of doing life together.
             </p>
             <p className="text-black leading-relaxed">
-              But we don't just cater to married couples - we also aim to help
-              singles to prepare for relationships on the best footing possible.
+              Our mission? To strengthen marriages by keeping it all the way real—no clichés, just our lived experiences, lessons learned, and insights into what it truly takes to make a relationship thrive. We understand that we’re all figuring this thing out together, so we decided to open the conversation to those in committed relationships, those contemplating marriage, and singles.
             </p>
           </div>
         </div>
@@ -85,58 +72,71 @@ const AboutScreen: React.FC = () => {
       <div className="py-20 bg-white px-16">
         <div className="container mx-auto px-4">
           <h2 className="font-serif text-4xl font-medium mb-12 text-center text-gray-900">
-            Our Philosophy
+            Our Model
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               <h3 className="text-2xl font-serif font-medium mb-4 text-gray-900">
-                Qualifications and Experience
+                The C.O.N.N.E.C.T. Model
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Together, we have over 40 years combined professional experience
-                in working systemically with individuals and families to achieve
-                positive change.
-              </p>
-              <h3 className="text-2xl font-serif font-medium mb-4 text-gray-900">
-                Philosophy and Approach
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                We use the three C's model of: "Conversation, Change and
-                Community".
+                Marriage thrives when couples truly connect. Our C.O.N.N.E.C.T. Model focuses on the core principles that create deep, lasting bonds.
               </p>
               <ul className="space-y-6">
                 <li>
                   <h4 className="text-xl font-medium text-gray-900 mb-2">
-                    Conversation:
+                    Communication:
                   </h4>
                   <p className="text-gray-600">
-                    Our captured conversations provide valuable insights and
-                    practical strategies to help you navigate the complexities
-                    of relationships. These conversations are made available for
-                    you here to watch over and over again.
+                    Honest and open discussions that bring clarity.
                   </p>
                 </li>
                 <li>
                   <h4 className="text-xl font-medium text-gray-900 mb-2">
-                    Change:
+                    Openness:
                   </h4>
                   <p className="text-gray-600">
-                    We recognize that every action within a marriage can lead to
-                    either growth or setbacks. We will equip you with the tools
-                    needed to create meaningful, lasting improvements in your
-                    relationship.
+                    Willingness to be vulnerable and transparent.
                   </p>
                 </li>
                 <li>
                   <h4 className="text-xl font-medium text-gray-900 mb-2">
-                    Community:
+                    Nurturing:
                   </h4>
                   <p className="text-gray-600">
-                    We understand the importance that being a part of a
-                    community can improve relationships. Community creates
-                    support, stability and accountability. We have created
-                    community spaces, both online and in-person, as an extension
-                    to participants' existing support systems.
+                    Caring for each other emotionally, physically, and spiritually.
+                  </p>
+                </li>
+                <li>
+                  <h4 className="text-xl font-medium text-gray-900 mb-2">
+                    Negotiation:
+                  </h4>
+                  <p className="text-gray-600">
+                    Finding balance and compromise in conflicts.
+                  </p>
+                </li>
+                <li>
+                  <h4 className="text-xl font-medium text-gray-900 mb-2">
+                    Empathy:
+                  </h4>
+                  <p className="text-gray-600">
+                    Understanding and valuing each other’s experiences.
+                  </p>
+                </li>
+                <li>
+                  <h4 className="text-xl font-medium text-gray-900 mb-2">
+                    Commitment:
+                  </h4>
+                  <p className="text-gray-600">
+                    Staying dedicated to growth and love.
+                  </p>
+                </li>
+                <li>
+                  <h4 className="text-xl font-medium text-gray-900 mb-2">
+                    Trust:
+                  </h4>
+                  <p className="text-gray-600">
+                    The foundation of emotional and relational security.
                   </p>
                 </li>
               </ul>

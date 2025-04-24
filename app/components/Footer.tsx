@@ -1,14 +1,26 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 // Type for our screens - exactly matching the Navbar component
 type PageType = "home" | "about" | "services" | "courses";
 
-interface FooterProps {
-  onNavigate: (screen: PageType) => void;
-}
+type FooterProps = {
+  onNavigate?: (screen: PageType) => void;
+};
 
 export default function Footer({ onNavigate }: FooterProps) {
+  const [currentPage, setCurrentPage] = useState<PageType>("home");
+
+  const handleNavigate = (screen: PageType) => {
+    setCurrentPage(screen);
+    if (onNavigate) {
+      onNavigate(screen);
+    }
+    console.log(`Navigated to: ${screen}`); // Optional: For debugging purposes
+  };
+
   return (
     <footer className="bg-gray-100 pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -16,7 +28,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="col-span-1 md:col-span-2">
             <div
               className="flex items-center mb-4 cursor-pointer"
-              onClick={() => onNavigate("home")}
+              onClick={() => handleNavigate("home")}
             >
               <Image
                 src="/media/images/logo.png"
@@ -26,6 +38,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 className="invert"
               />
             </div>
+            <p>Current Page: {currentPage}</p> {/* Displaying currentPage */}
             <p className="text-gray-600 mb-6 max-w-md">
               Dedicated to helping couples build stronger, more fulfilling
               relationships through evidence-based therapy and compassionate
@@ -43,14 +56,10 @@ export default function Footer({ onNavigate }: FooterProps) {
               Quick Links
             </h3>
             <ul className="space-y-2">
-              <FooterLink onClick={() => onNavigate("home")}>Home</FooterLink>
-              <FooterLink onClick={() => onNavigate("about")}>About</FooterLink>
-              <FooterLink onClick={() => onNavigate("services")}>
-                Services
-              </FooterLink>
-              <FooterLink onClick={() => onNavigate("courses")}>
-                Courses
-              </FooterLink>
+              <FooterLink href="/">Home</FooterLink>
+              <FooterLink href="/about">About</FooterLink>
+              <FooterLink href="/services">Services</FooterLink>
+              <FooterLink href="/courses">Courses</FooterLink>
             </ul>
           </div>
 
@@ -93,20 +102,20 @@ export default function Footer({ onNavigate }: FooterProps) {
 }
 
 function FooterLink({
-  onClick,
+  href,
   children,
 }: {
-  onClick: () => void;
+  href: string;
   children: React.ReactNode;
 }) {
   return (
     <li>
-      <button
-        onClick={onClick}
+      <Link
+        href={href}
         className="text-gray-600 hover:text-gray-900 transition-colors text-left"
       >
         {children}
-      </button>
+      </Link>
     </li>
   );
 }

@@ -1,16 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { PageType } from "./PageManager";
 
-// Define types for our navigation
-type PageType = "home" | "about" | "services" | "courses";
-
-interface NavbarProps {
-  currentPage: PageType;
-  onNavigate: (page: PageType) => void;
-}
-
-export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
+export default function Navbar() {
+  const [currentPage, setCurrentPage] = useState<PageType>("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,8 +19,8 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavigation = (page: PageType) => {
-    onNavigate(page);
+  const handleNavigate = (page: PageType) => {
+    setCurrentPage(page);
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
@@ -42,7 +38,7 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
         <div className="flex items-center justify-between">
           <div
             className="flex items-center cursor-pointer"
-            onClick={() => handleNavigation("home")}
+            onClick={() => handleNavigate("home")}
           >
             <Image
               src="/media/images/logo.png"
@@ -58,7 +54,7 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
             <NavLinks
               isScrolled={isScrolled}
               currentPage={currentPage}
-              onNavigate={handleNavigation}
+              onNavigate={handleNavigate}
             />
             <a
               href="https://calendly.com/thisismarriageuk"
@@ -112,7 +108,7 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
             <NavLinks
               isMobile={true}
               currentPage={currentPage}
-              onNavigate={handleNavigation}
+              onNavigate={handleNavigate}
             />
             <a
               href="https://calendly.com/thisismarriageuk"
@@ -153,30 +149,24 @@ function NavLinks({
 
   return (
     <>
-      <button
-        onClick={() => onNavigate("home")}
-        className={`${currentPage === "home" ? activeClass : baseClass}`}
-      >
+      <Link href="/" className={`${currentPage === "home" ? activeClass : baseClass}`}>
         Home
-      </button>
-      <button
-        onClick={() => onNavigate("about")}
-        className={`${currentPage === "about" ? activeClass : baseClass}`}
-      >
+      </Link>
+      <Link href="/about" className={`${currentPage === "about" ? activeClass : baseClass}`}>
         About
-      </button>
-      <button
-        onClick={() => onNavigate("services")}
-        className={`${currentPage === "services" ? activeClass : baseClass}`}
-      >
+      </Link>
+      <Link href="/services" className={`${currentPage === "services" ? activeClass : baseClass}`}>
         Services
-      </button>
-      <button
-        onClick={() => onNavigate("courses")}
-        className={`${currentPage === "courses" ? activeClass : baseClass}`}
-      >
+      </Link>
+      <Link href="/courses" className={`${currentPage === "courses" ? activeClass : baseClass}`}>
         Courses
-      </button>
+      </Link>
+      <Link href="/products" className={`${currentPage === "products" ? activeClass : baseClass}`}>
+        Products
+      </Link>
+      <Link href="/testimonials" className={`${currentPage === "testimonials" ? activeClass : baseClass}`}>
+        Testimonials
+      </Link>
     </>
   );
 }
