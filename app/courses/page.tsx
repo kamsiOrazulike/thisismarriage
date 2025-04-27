@@ -15,8 +15,7 @@ const CoursesPage: React.FC = () => {
   return (
     <div className="bg-black">
       {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center">
-        {/* Background Image */}
+      <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0 w-full h-full z-0">
           <Image
             src="/media/images/background.jpg"
@@ -24,24 +23,22 @@ const CoursesPage: React.FC = () => {
             fill
             style={{ objectFit: "cover" }}
           />
-          {/* Overlay to darken image and make text more readable */}
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
-
-        <div className="pt-32 container mx-auto px-4 relative z-10">
-          {/* Content */}
-          <h1 className="font-serif text-3xl md:text-7xl font-medium mb-6 text-white">
-            Our Courses
-          </h1>
-          <p className="text-md md:text-xl text-white max-w-3xl mx-auto mb-10">
-            Discover our specialized courses designed to strengthen
-            relationships at every stage
-          </p>
-          <ScrollButton onClick={handleScrollDown} />
+        <div className="relative z-10 flex items-center justify-center h-full text-white text-center px-4">
+          <div className="max-w-4xl md:mt-24 flex flex-col items-center">
+            <h1 className="font-serif text-3xl md:text-4xl font-medium mb-2">
+              Our Courses
+            </h1>
+            <p className="text-md md:text-xl font-light max-w-3xl mx-auto mb-10">
+              Discover our specialized courses designed to strengthen relationships at every stage.
+            </p>
+            <ScrollButton onClick={handleScrollDown} />
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Courses Grid */}
+      {/* Courses Section */}
       <div className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="font-serif text-4xl font-medium mb-12 text-gray-900 text-center">

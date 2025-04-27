@@ -4,11 +4,25 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PageType } from "./PageManager";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const [currentPage, setCurrentPage] = useState<PageType>("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Determine current page based on pathname
+  const getCurrentPage = (): PageType => {
+    if (pathname === "/") return "home";
+    if (pathname === "/about") return "about";
+    if (pathname === "/services") return "services";
+    if (pathname === "/courses") return "courses";
+    if (pathname === "/products") return "products";
+    if (pathname === "/testimonials") return "testimonials";
+    return "home";
+  };
+
+  const currentPage = getCurrentPage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +34,6 @@ export default function Navbar() {
   }, []);
 
   const handleNavigate = (page: PageType) => {
-    setCurrentPage(page);
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
@@ -36,10 +49,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div
-            className="flex items-center cursor-pointer"
-            onClick={() => handleNavigate("home")}
-          >
+          <Link href="/" className="flex items-center cursor-pointer">
             <Image
               src="/media/images/logo.png"
               alt="ThisIsMarriage Logo"
@@ -47,7 +57,7 @@ export default function Navbar() {
               height={180}
               className="mr-2"
             />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -73,6 +83,7 @@ export default function Navbar() {
           <button
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -137,36 +148,55 @@ function NavLinks({
   currentPage,
   onNavigate,
 }: NavLinksProps) {
+  // Base classes for link styling
   const baseClass = isMobile
-    ? "text-gray-900 hover:text-gray-600"
+    ? "text-gray-800 hover:text-gray-600 relative py-1 transition-all duration-300"
     : isScrolled
-    ? "text-white/80 hover:text-white"
-    : "text-white/80 hover:text-white";
+    ? "text-white/80 hover:text-white relative py-1 transition-all duration-300"
+    : "text-white/80 hover:text-white relative py-1 transition-all duration-300";
 
+  // Active classes for link styling
   const activeClass = isMobile
-    ? "text-[#271E19] font-medium"
-    : "text-white font-bold";
+    ? "text-[#271E19] font-medium relative py-1 transition-all duration-300"
+    : "text-white font-bold relative py-1 transition-all duration-300";
+
+  // Links configuration
+  const links = [
+    { href: "/", label: "Home", type: "home" as PageType },
+    { href: "/about", label: "About", type: "about" as PageType },
+    { href: "/services", label: "Services", type: "services" as PageType },
+    { href: "/courses", label: "Courses", type: "courses" as PageType },
+    { href: "/products", label: "Products", type: "products" as PageType },
+    { href: "/testimonials", label: "Testimonials", type: "testimonials" as PageType },
+  ];
 
   return (
     <>
-      <Link href="/" className={`${currentPage === "home" ? activeClass : baseClass}`}>
-        Home
-      </Link>
-      <Link href="/about" className={`${currentPage === "about" ? activeClass : baseClass}`}>
-        About
-      </Link>
-      <Link href="/services" className={`${currentPage === "services" ? activeClass : baseClass}`}>
-        Services
-      </Link>
-      <Link href="/courses" className={`${currentPage === "courses" ? activeClass : baseClass}`}>
-        Courses
-      </Link>
-      <Link href="/products" className={`${currentPage === "products" ? activeClass : baseClass}`}>
-        Products
-      </Link>
-      <Link href="/testimonials" className={`${currentPage === "testimonials" ? activeClass : baseClass}`}>
-        Testimonials
-      </Link>
+      {links.map((link) => (
+        <Link
+          key={link.href}
+          href={link.href}
+          className={`${
+            currentPage === link.type ? activeClass : baseClass
+          } group`}
+          onClick={() => onNavigate(link.type)}
+        >
+          {link.label}
+          <span 
+            className={`absolute left-0 bottom-0 w-full h-0.5 transform origin-left transition-transform duration-300 ease-out
+              ${currentPage === link.type 
+                ? isMobile 
+                  ? 'bg-[#271E19] scale-x-100' 
+                  : 'bg-white scale-x-100' 
+                : 'scale-x-0 group-hover:scale-x-100'
+              } 
+              ${isMobile 
+                ? 'bg-gray-800 group-hover:bg-[#271E19]' 
+                : 'bg-white/70 group-hover:bg-white'
+              }`}
+          ></span>
+        </Link>
+      ))}
     </>
   );
 }

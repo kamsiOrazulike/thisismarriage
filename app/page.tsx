@@ -1,217 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import React, { useRef } from "react";
 import Card from "./components/Cards";
 import ScrollButton from "./components/ScrollButton";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
-  const heroTitleRef = useRef<HTMLHeadingElement>(null);
-  const heroDescRef = useRef<HTMLParagraphElement>(null);
-  const heroButtonRef = useRef<HTMLDivElement>(null);
-
-  const aboutSectionRef = useRef<HTMLElement>(null);
-  const aboutTitleRef = useRef<HTMLHeadingElement>(null);
-  const aboutTextRef = useRef<HTMLDivElement>(null);
-  const aboutButtonRef = useRef<HTMLButtonElement>(null);
-  const aboutImageRef = useRef<HTMLDivElement>(null);
-
-  const servicesRef = useRef<HTMLElement>(null);
-  const servicesTitleRef = useRef<HTMLHeadingElement>(null);
-  const servicesCardsRef = useRef<HTMLDivElement>(null);
-
-  const testimonialsRef = useRef<HTMLElement>(null);
-  const testimonialsTitleRef = useRef<HTMLHeadingElement>(null);
-  const testimonialsQuoteRef = useRef<HTMLDivElement>(null);
-
-  const ctaRef = useRef<HTMLElement>(null);
-  const ctaTitleRef = useRef<HTMLHeadingElement>(null);
-  const ctaTextRef = useRef<HTMLParagraphElement>(null);
-  const ctaButtonRef = useRef<HTMLAnchorElement>(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      try {
-        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-      } catch (error) {
-        console.error("Failed to register GSAP plugins:", error);
-        return;
-      }
-    }
-
-    const heroTl = gsap.timeline();
-
-    if (heroTitleRef.current) {
-      heroTl.from(heroTitleRef.current, {
-        opacity: 0,
-        y: 30,
-        duration: 1.2,
-        ease: "power3.out",
-      });
-    }
-
-    if (heroDescRef.current) {
-      heroTl.from(
-        heroDescRef.current,
-        {
-          opacity: 0,
-          y: 20,
-          duration: 1,
-          ease: "power3.out",
-        },
-        "-=0.5"
-      );
-    }
-
-    if (heroButtonRef.current) {
-      heroTl.from(
-        heroButtonRef.current,
-        {
-          opacity: 0,
-          y: 20,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        "-=0.3"
-      );
-    }
-
-    const aboutElements = [
-      aboutTitleRef.current,
-      aboutTextRef.current,
-      aboutButtonRef.current,
-    ].filter(Boolean);
-
-    if (aboutElements.length > 0 && aboutSectionRef.current) {
-      gsap.from(aboutElements, {
-        opacity: 0,
-        y: 30,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: aboutSectionRef.current,
-          start: "top 70%",
-        },
-      });
-    }
-
-    if (aboutImageRef.current && aboutSectionRef.current) {
-      gsap.from(aboutImageRef.current, {
-        opacity: 0,
-        x: 30,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: aboutSectionRef.current,
-          start: "top 70%",
-        },
-      });
-    }
-
-    if (servicesTitleRef.current && servicesRef.current) {
-      gsap.from(servicesTitleRef.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: servicesRef.current,
-          start: "top 70%",
-        },
-      });
-    }
-
-    if (
-      servicesCardsRef.current &&
-      servicesCardsRef.current.children.length > 0 &&
-      servicesRef.current
-    ) {
-      gsap.from(servicesCardsRef.current.children, {
-        opacity: 0,
-        y: 40,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: servicesRef.current,
-          start: "top 60%",
-        },
-      });
-    }
-
-    if (testimonialsTitleRef.current && testimonialsRef.current) {
-      gsap.from(testimonialsTitleRef.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: testimonialsRef.current,
-          start: "top 70%",
-        },
-      });
-    }
-
-    if (testimonialsQuoteRef.current && testimonialsRef.current) {
-      gsap.from(testimonialsQuoteRef.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: testimonialsRef.current,
-          start: "top 60%",
-        },
-      });
-    }
-
-    const ctaElements = [
-      ctaTitleRef.current,
-      ctaTextRef.current,
-      ctaButtonRef.current,
-    ].filter(Boolean);
-
-    if (ctaElements.length > 0 && ctaRef.current) {
-      gsap.from(ctaElements, {
-        opacity: 0,
-        y: 30,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ctaRef.current,
-          start: "top 70%",
-        },
-      });
-    }
-
-    return () => {
-      if (typeof window !== "undefined") {
-        try {
-          ScrollTrigger.getAll().forEach((trigger) => trigger.kill(true));
-        } catch (error) {
-          console.error("Error cleaning up ScrollTrigger:", error);
-        }
-      }
-    };
-  }, []);
-
   const handleScrollDown = () => {
-    if (!aboutSectionRef.current) return;
-
-    try {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: { y: aboutSectionRef.current, offsetY: 50 },
-        ease: "power3.inOut",
-      });
-    } catch (error) {
-      console.error("Error in scrolling:", error);
-      aboutSectionRef.current.scrollIntoView({
+    const aboutSection = document.getElementById("about-section");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
@@ -221,8 +21,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen overflow-hidden">
-        {/* Background Video */}
+      <section className="relative h-[85vh] overflow-hidden">
         <div className="absolute inset-0 w-full h-full z-0">
           <video
             autoPlay
@@ -235,77 +34,92 @@ export default function HomePage() {
           >
             <source src="/media/videos/background-video.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <div className="relative z-10 flex items-center justify-center h-full text-white text-center px-4">
-          <div className="max-w-4xl md:mt-24 flex flex-col items-center">
-            <h1
-              ref={heroTitleRef}
-              className="font-serif text-3xl md:text-4xl font-medium mb-2"
-            >
-              Empower Your Relationship:
+          <div className="max-w-4xl flex flex-col items-center">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium mb-4">
+              Empower Your Relationship
             </h1>
-            <p
-              ref={heroDescRef}
-              className="text-md md:text-xl font-light max-w-3xl mx-auto mb-10"
-            >
-              "We support marriages through their challenges, prepare couples for marriage, and guide singles toward forming healthy partnerships."
+            <p className="text-lg md:text-xl font-light max-w-3xl mx-auto mb-10">
+              "We support marriages through their challenges, prepare couples
+              for marriage, and guide singles toward forming healthy
+              partnerships."
             </p>
-            <div ref={heroButtonRef}>
-              <ScrollButton onClick={handleScrollDown} />
+            <div className="flex gap-4 mb-12">
+              <Link
+                href="/services"
+                className="px-6 py-3 bg-[#86431a] hover:bg-[#86431a]/90 text-white rounded transition-colors duration-300 font-medium"
+              >
+                Our Services
+              </Link>
+              <a
+                href="https://calendly.com/thisismarriageuk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border-2 border-[#c9a66b] text-[#c9a66b] hover:bg-[#c9a66b]/10 rounded transition-colors duration-300 font-medium"
+              >
+                Book a Session
+              </a>
             </div>
+            <ScrollButton onClick={handleScrollDown} />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section ref={aboutSectionRef} className="py-20 bg-gray-50">
+      <section id="about-section" className="py-24 bg-[#f5f0e6]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2
-                ref={aboutTitleRef}
-                className="font-serif text-4xl font-medium mb-6 text-gray-900"
-              >
-                Strengthen Your Connection: Tools to Enhance Your Relationship
+            <div className="order-2 md:order-1">
+              <div className="w-32 h-1 bg-[#86431a] mb-6"></div>
+              <h2 className="font-serif text-4xl font-medium mb-6 text-[#3e2c1f]">
+                About Us
               </h2>
-              <div ref={aboutTextRef}>
-                <p className="text-gray-600 mb-8 leading-relaxed">
-                  Whether you're preparing for marriage, navigating the complexities of a long-term relationship, or seeking ways to reignite your connection, we have the tools and support to help you thrive. Explore our specially designed resources to deepen your bond, improve communication, and tackle challenges with confidence.
-                </p>
-              </div>
-              <button
-                ref={aboutButtonRef}
-                className="inline-block px-6 py-2 border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors font-medium"
+              <p className="text-[#3e2c1f]/80 mb-8 leading-relaxed text-lg">
+                We are Curtis and Wanitta Powell, married since 2001. This is
+                Marriage started back in 2016 with an honest reflection of our
+                journey. We quickly realized that the real, messy, valuable
+                parts of marriage were exactly what so many couples needed to
+                hear.
+              </p>
+              <Link
+                href="/about"
+                className="inline-block px-6 py-3 bg-[#86431a] text-white hover:bg-[#86431a]/90 transition-colors font-medium rounded"
               >
-                LEARN MORE
-              </button>
+                Learn More About Us
+              </Link>
             </div>
-            <div ref={aboutImageRef} className="relative">
-              <div className="aspect-w-4 aspect-h-5 relative">
-                <div className="w-full h-full bg-gray-200"></div>
+            <div className="order-1 md:order-2 relative">
+              <div className="aspect-w-4 aspect-h-3 relative rounded-lg shadow-xl overflow-hidden">
+                <Image
+                  src="/media/images/thepowells.png"
+                  alt="Curtis and Wanitta Powell"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  className="rounded-lg"
+                />
               </div>
-              <div className="absolute -bottom-6 -left-6 w-2/3 aspect-w-1 aspect-h-1">
-                <div className="w-full h-full bg-gray-300"></div>
-              </div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#c9a66b] rounded-full -z-10"></div>
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-[#86431a] rounded-full -z-10"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section ref={servicesRef} className="py-20 bg-[#271E19] text-white">
+      <section className="py-24 bg-[#271E19] text-white">
         <div className="container mx-auto px-4">
-          <h2
-            ref={servicesTitleRef}
-            className="font-serif text-4xl font-medium mb-16 text-center"
-          >
-            OUR SERVICES
-          </h2>
-          <div
-            ref={servicesCardsRef}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
+          <div className="text-center mb-16">
+            <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
+            <h2 className="font-serif text-4xl font-medium mb-4">
+              Our Services
+            </h2>
+            <p className="text-white/80 max-w-2xl mx-auto">
+              Specialized support for every stage of your relationship journey
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card
               variant="feature"
               title="Couples Therapy"
@@ -331,54 +145,379 @@ export default function HomePage() {
               imageAlt="Relationship Renewal"
             />
           </div>
+          <div className="text-center mt-12">
+            <Link
+              href="/services"
+              className="inline-block px-6 py-3 border-2 border-[#c9a66b] text-[#c9a66b] hover:bg-[#c9a66b]/10 rounded transition-colors duration-300 font-medium"
+            >
+              View All Services
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section ref={testimonialsRef} className="py-20 bg-gray-100">
+      {/* Model Section */}
+      <section className="py-24 bg-gradient-to-r from-[#86431a]/95 to-[#271E19]/95 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern
+                id="grid"
+                width="40"
+                height="40"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 40 0 L 0 0 0 40"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="1"
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
+            <h2 className="font-serif text-4xl font-medium mb-6">
+              The C.O.N.N.E.C.T. Model
+            </h2>
+            <p className="text-white/80">
+              Our proven approach to building lasting connections and
+              strengthening relationships
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <div className="w-32 h-32 rounded-full bg-[#c9a66b]/20 backdrop-blur-sm flex items-center justify-center text-center hover:bg-[#c9a66b]/30 transition-all duration-300 border border-white/20">
+              <div>
+                <div className="text-3xl font-bold mb-1">C</div>
+                <div className="text-sm">Communication</div>
+              </div>
+            </div>
+            <div className="w-32 h-32 rounded-full bg-[#c9a66b]/20 backdrop-blur-sm flex items-center justify-center text-center hover:bg-[#c9a66b]/30 transition-all duration-300 border border-white/20">
+              <div>
+                <div className="text-3xl font-bold mb-1">O</div>
+                <div className="text-sm">Openness</div>
+              </div>
+            </div>
+            <div className="w-32 h-32 rounded-full bg-[#c9a66b]/20 backdrop-blur-sm flex items-center justify-center text-center hover:bg-[#c9a66b]/30 transition-all duration-300 border border-white/20">
+              <div>
+                <div className="text-3xl font-bold mb-1">N</div>
+                <div className="text-sm">Nurturing</div>
+              </div>
+            </div>
+            <div className="w-32 h-32 rounded-full bg-[#c9a66b]/20 backdrop-blur-sm flex items-center justify-center text-center hover:bg-[#c9a66b]/30 transition-all duration-300 border border-white/20">
+              <div>
+                <div className="text-3xl font-bold mb-1">N</div>
+                <div className="text-sm">Negotiation</div>
+              </div>
+            </div>
+            <div className="w-32 h-32 rounded-full bg-[#c9a66b]/20 backdrop-blur-sm flex items-center justify-center text-center hover:bg-[#c9a66b]/30 transition-all duration-300 border border-white/20">
+              <div>
+                <div className="text-3xl font-bold mb-1">E</div>
+                <div className="text-sm">Empathy</div>
+              </div>
+            </div>
+            <div className="w-32 h-32 rounded-full bg-[#c9a66b]/20 backdrop-blur-sm flex items-center justify-center text-center hover:bg-[#c9a66b]/30 transition-all duration-300 border border-white/20">
+              <div>
+                <div className="text-3xl font-bold mb-1">C</div>
+                <div className="text-sm">Commitment</div>
+              </div>
+            </div>
+            <div className="w-32 h-32 rounded-full bg-[#c9a66b]/20 backdrop-blur-sm flex items-center justify-center text-center hover:bg-[#c9a66b]/30 transition-all duration-300 border border-white/20">
+              <div>
+                <div className="text-3xl font-bold mb-1">T</div>
+                <div className="text-sm">Trust</div>
+              </div>
+            </div>
+          </div>
+          <div className="text-center">
+            <Link
+              href="/about"
+              className="inline-block px-6 py-3 bg-[#c9a66b] text-[#271E19] hover:bg-[#c9a66b]/90 transition-colors font-medium rounded"
+            >
+              Learn About Our Model
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Courses Section */}
+      <section className="py-24 bg-[#f5f0e6]">
         <div className="container mx-auto px-4">
-          <h2
-            ref={testimonialsTitleRef}
-            className="font-serif text-4xl font-medium mb-16 text-gray-900 text-center"
-          >
-            SUCCESS STORIES
-          </h2>
-          <div className="max-w-4xl mx-auto">
-            <div ref={testimonialsQuoteRef}>
-              <Card
-                variant="testimonial"
-                title=""
-                description="The therapy sessions with ThisIsMarriage completely transformed our relationship. We learned to communicate effectively and understand each other on a deeper level. We're more connected now than we've ever been."
-                author="Michael & Sarah"
-                subtitle="Together for 7 years"
-              />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <div className="aspect-w-16 aspect-h-9 relative rounded-lg shadow-xl overflow-hidden">
+                <div className="w-full h-full bg-gray-200 relative">
+                  {/* Placeholder for course image - replace with actual image */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-[#86431a]/10">
+                    <span className="text-[#86431a] font-serif text-2xl">
+                      Course Preview
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#c9a66b] rounded-md -z-10 rotate-6"></div>
+            </div>
+            <div>
+              <div className="w-32 h-1 bg-[#86431a] mb-6"></div>
+              <h2 className="font-serif text-4xl font-medium mb-6 text-[#3e2c1f]">
+                Our Courses
+              </h2>
+              <p className="text-[#3e2c1f]/80 mb-8 leading-relaxed text-lg">
+                Transform your relationship with our specialized courses
+                designed to help couples at every stage. From premarital
+                preparation to deepening long-term connections, our expert-led
+                programs provide practical tools and insights.
+              </p>
+              <Link
+                href="/courses"
+                className="inline-block px-6 py-3 bg-[#86431a] text-white hover:bg-[#86431a]/90 transition-colors font-medium rounded"
+              >
+                Explore Courses
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section ref={ctaRef} className="py-20 bg-[#271E19] text-white text-center">
+      {/* Products Section */}
+      <section className="py-24 bg-[#c9a66b]/20">
         <div className="container mx-auto px-4">
-          <h2
-            ref={ctaTitleRef}
-            className="font-serif text-4xl font-medium mb-6"
-          >
+          <div className="text-center mb-16">
+            <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
+            <h2 className="font-serif text-4xl font-medium mb-4 text-white">
+              Relationship Products
+            </h2>
+            <p className="text-white/80 max-w-2xl mx-auto">
+              Tools and resources to strengthen your connection at home
+            </p>
+          </div>
+
+          {/* Product Cards with improved styling */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Connection Journal Card */}
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-[#c9a66b]/30 transform hover:-translate-y-2">
+              <div className="h-48 relative overflow-hidden">
+                {/* Replace this with actual image when available */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#86431a]/80 to-[#271E19] flex items-center justify-center">
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-full">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-10 w-10 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute top-3 right-3 bg-[#c9a66b] text-[#271E19] px-3 py-1 rounded-full text-sm font-medium">
+                  Bestseller
+                </div>
+              </div>
+              <div className="p-6 bg-white">
+                <h3 className="text-xl font-serif font-medium mb-2 text-[#3e2c1f]">
+                  Connection Journal
+                </h3>
+                <p className="text-[#3e2c1f]/70 mb-4 min-h-[3rem]">
+                  Daily prompts to deepen your understanding and appreciation of
+                  each other.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-[#86431a] text-lg">
+                    £24.99
+                  </span>
+                  <Link
+                    href="/products"
+                    className="px-4 py-2 bg-[#86431a]/10 text-[#86431a] hover:bg-[#86431a] hover:text-white rounded transition-colors duration-300"
+                  >
+                    View Details
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Conversation Cards Card */}
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-[#c9a66b]/30 transform hover:-translate-y-2">
+              <div className="h-48 relative overflow-hidden">
+                {/* Replace this with actual image when available */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#c9a66b]/80 to-[#86431a] flex items-center justify-center">
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-full">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-10 w-10 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute top-3 right-3 bg-[#c9a66b] text-[#271E19] px-3 py-1 rounded-full text-sm font-medium">
+                  Popular
+                </div>
+              </div>
+              <div className="p-6 bg-white">
+                <h3 className="text-xl font-serif font-medium mb-2 text-[#3e2c1f]">
+                  Conversation Cards
+                </h3>
+                <p className="text-[#3e2c1f]/70 mb-4 min-h-[3rem]">
+                  52 thought-provoking questions to spark meaningful
+                  conversations.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-[#86431a] text-lg">
+                    £19.99
+                  </span>
+                  <Link
+                    href="/products"
+                    className="px-4 py-2 bg-[#86431a]/10 text-[#86431a] hover:bg-[#86431a] hover:text-white rounded transition-colors duration-300"
+                  >
+                    View Details
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* This Is Marriage Book Card */}
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-[#c9a66b]/30 transform hover:-translate-y-2">
+              <div className="h-48 relative overflow-hidden">
+                {/* Replace this with actual image when available */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#271E19] to-[#86431a]/80 flex items-center justify-center">
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-full">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-10 w-10 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute top-3 right-3 bg-[#c9a66b] text-[#271E19] px-3 py-1 rounded-full text-sm font-medium">
+                  New
+                </div>
+              </div>
+              <div className="p-6 bg-white">
+                <h3 className="text-xl font-serif font-medium mb-2 text-[#3e2c1f]">
+                  This Is Marriage
+                </h3>
+                <p className="text-[#3e2c1f]/70 mb-4 min-h-[3rem]">
+                  Our comprehensive guide to building a lasting, fulfilling
+                  relationship.
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-[#86431a] text-lg">
+                    £29.99
+                  </span>
+                  <Link
+                    href="/products"
+                    className="px-4 py-2 bg-[#86431a]/10 text-[#86431a] hover:bg-[#86431a] hover:text-white rounded transition-colors duration-300"
+                  >
+                    View Details
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/products"
+              className="inline-block px-6 py-3 border-2 border-[#c9a66b] text-[#c9a66b] hover:bg-[#c9a66b]/10 rounded transition-colors duration-300 font-medium"
+            >
+              View All Products
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-[#271E19] text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
+            <h2 className="font-serif text-4xl font-medium mb-4">Success Stories</h2>
+            <p className="text-white/80 max-w-2xl mx-auto">
+              Hear from couples who have transformed their relationships
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-[#f5f0e6] p-8 rounded-lg shadow-lg border border-[#c9a66b]/50">
+              <blockquote className="text-xl text-[#3e2c1f]/80 italic mb-6">
+                "The work of Wanitta and Curtis through This is Marriage has been a
+                priceless gift in my life as a husband and father and my marriage
+                relationship."
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-12 h-12 rounded-full bg-[#c9a66b]/50 mr-4"></div>
+                <div>
+                  <p className="font-medium text-[#3e2c1f]">Eddie</p>
+                  <p className="text-[#3e2c1f]/70">Husband & Father</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="text-center mt-12">
+            <Link
+              href="/testimonials"
+              className="inline-block px-6 py-3 bg-[#c9a66b] text-[#271E19] hover:bg-[#c9a66b]/90 transition-colors font-medium rounded"
+            >
+              Read More Testimonials
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-[#86431a] text-white text-center">
+        <div className="container mx-auto px-4">
+          <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
+          <h2 className="font-serif text-4xl font-medium mb-6">
             READY TO STRENGTHEN YOUR RELATIONSHIP?
           </h2>
-          <p ref={ctaTextRef} className="text-xl max-w-2xl mx-auto mb-10">
+          <p className="text-xl max-w-2xl mx-auto mb-10">
             Take the first step toward a more fulfilling partnership. Schedule a
             consultation today.
           </p>
-          <a
-            href="https://calendly.com/thisismarriageuk"
-            target="_blank"
-            rel="noopener noreferrer"
-            ref={ctaButtonRef}
-            className="px-8 py-3 bg-white text-gray-900 hover:bg-gray-100 rounded-sm text-lg font-medium transition-colors"
-          >
-            Get Started
-          </a>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://calendly.com/thisismarriageuk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 bg-white text-[#86431a] hover:bg-gray-100 rounded text-lg font-medium transition-colors"
+            >
+              Book a Session
+            </a>
+            <Link
+              href="/services"
+              className="px-8 py-3 bg-transparent border-2 border-white text-white hover:bg-white/10 rounded text-lg font-medium transition-colors"
+            >
+              Explore Services
+            </Link>
+          </div>
         </div>
       </section>
     </>
