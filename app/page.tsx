@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[85vh] overflow-hidden">
+      <section className="relative h-[90vh] overflow-hidden">
         <div className="absolute inset-0 w-full h-full z-0">
           <video
             autoPlay
@@ -68,7 +68,7 @@ export default function HomePage() {
       </section>
 
       {/* About Section */}
-      <section id="about-section" className="py-24 bg-[#f5f0e6]">
+      <section id="about-section" className="pt-12 pb-24 bg-[#f5f0e6]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">

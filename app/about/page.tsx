@@ -6,71 +6,16 @@ import React from "react";
 import Image from "next/image";
 import ScrollButton from "../components/ScrollButton";
 
-// Define the model point type
-interface ModelPoint {
-  letter: string;
-  title: string;
-  description: string;
-  icon: string; // Font Awesome class name
-}
-
 const AboutPage: React.FC = () => {
-  // CONNECT Model points data
-  const connectModel: ModelPoint[] = [
-    {
-      letter: "C",
-      title: "Communication",
-      description: "Honest and open discussions that bring clarity.",
-      icon: "fas fa-comments",
-    },
-    {
-      letter: "O",
-      title: "Openness",
-      description: "Willingness to be vulnerable and transparent.",
-      icon: "fas fa-door-open",
-    },
-    {
-      letter: "N",
-      title: "Nurturing",
-      description:
-        "Caring for each other emotionally, physically, and spiritually.",
-      icon: "fas fa-seedling",
-    },
-    {
-      letter: "N",
-      title: "Negotiation",
-      description: "Finding balance and compromise in conflicts.",
-      icon: "fas fa-handshake",
-    },
-    {
-      letter: "E",
-      title: "Empathy",
-      description: "Understanding and valuing each other's experiences.",
-      icon: "fas fa-heart",
-    },
-    {
-      letter: "C",
-      title: "Commitment",
-      description: "Staying dedicated to growth and love.",
-      icon: "fas fa-lock",
-    },
-    {
-      letter: "T",
-      title: "Trust",
-      description: "The foundation of emotional and relational security.",
-      icon: "fas fa-shield-alt",
-    },
-  ];
-
   const handleScrollDown = () => {
-    const nextSection = document.querySelector(".py-20.bg-gray-100");
+    const nextSection = document.querySelector(".py-20.bg-[#f5f0e6]");
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <div className="bg-black text-gray-100">
+    <div className="bg-[#271E19] text-[#f5f0e6]">
       {/* Hero Section */}
       <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0 w-full h-full z-0">
@@ -80,14 +25,14 @@ const AboutPage: React.FC = () => {
             fill
             style={{ objectFit: "cover" }}
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-[#271E19]/70"></div>
         </div>
-        <div className="relative z-10 flex items-center justify-center h-full text-white text-center px-4">
+        <div className="relative z-10 flex items-center justify-center h-full text-center px-4">
           <div className="max-w-4xl md:mt-24 flex flex-col items-center">
-            <h1 className="font-serif text-3xl md:text-4xl font-medium mb-2">
+            <h1 className="font-serif text-4xl md:text-5xl font-medium mb-4">
               About Us
             </h1>
-            <p className="text-md md:text-xl font-light max-w-3xl mx-auto mb-10">
+            <p className="text-lg md:text-xl font-light max-w-3xl mx-auto mb-10">
               Unfiltered conversations about marriage - That's the essence of
               'This is Marriage.'
             </p>
@@ -97,9 +42,9 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* About Us Section */}
-      <section className="py-20 bg-gray-100 px-6 md:px-16">
+      <section className="py-20 bg-[#f5f0e6] px-6 md:px-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="font-serif text-4xl font-medium text-center text-[#3e2c1f] mb-12">
             Who We Are
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -113,14 +58,14 @@ const AboutPage: React.FC = () => {
               />
             </div>
             <div className="flex flex-col">
-              <p className="text-gray-800 leading-relaxed mb-6">
+              <p className="text-[#3e2c1f]/80 leading-relaxed mb-6">
                 We are Curtis and Wanitta Powell, married since 2001, and let's
                 be real—marriage is a beautiful yet challenging journey. This is
                 Marriage started back in 2016 with a simple social media post on
                 our 15th anniversary. We were honestly reflecting on our journey
                 on camera, and instantly, people became engaged.
               </p>
-              <p className="text-gray-800 leading-relaxed mb-6">
+              <p className="text-[#3e2c1f]/80 leading-relaxed mb-6">
                 We learned that the honest, messy, and valuable parts of
                 marriage we were talking about were exactly what so many couples
                 and singles needed to hear. We listened to the feedback and took
@@ -128,7 +73,7 @@ const AboutPage: React.FC = () => {
                 diving into real talk about love, intimacy, and the everyday
                 realities of doing life together.
               </p>
-              <p className="text-gray-800 leading-relaxed">
+              <p className="text-[#3e2c1f]/80 leading-relaxed">
                 Our mission? To strengthen marriages by keeping it all the way
                 real—no clichés, just our lived experiences, lessons learned,
                 and insights into what it truly takes to make a relationship
@@ -142,71 +87,71 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Our Model Section */}
-      <section className="py-20 bg-white px-6 md:px-16">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
-            Our Model
-          </h2>
-
-          <div className="mb-12">
-            <h3 className="text-2xl font-serif font-medium mb-4 text-gray-900 text-center">
+      {/* CONNECT Model Section */}
+      <section className="py-24 bg-gradient-to-r from-[#86431a]/95 to-[#271E19]/95 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern
+                id="grid"
+                width="40"
+                height="40"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 40 0 L 0 0 0 40"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="1"
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
+            <h2 className="font-serif text-4xl font-medium mb-6">
               The C.O.N.N.E.C.T. Model
-            </h3>
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Together, we have over 40 years of combined professional
-                experience working systemically with individuals and families to
-                achieve positive change. We have created the C.O.N.N.E.C.T.
-                Model, which underpins our work with you.
-              </p>
-              <p className="text-gray-600 mb-10 leading-relaxed">
-                Marriage thrives when couples truly connect. Our C.O.N.N.E.C.T.
-                Model focuses on the core principles that create deep, lasting
-                bonds.
-              </p>
-            </div>
+            </h2>
+            <p className="text-white/80">
+              Our proven approach to building lasting connections and
+              strengthening relationships
+            </p>
           </div>
-
-          {/* CONNECT Model Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {connectModel.map((point, index) => (
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {[
+              { letter: "C", title: "Communication" },
+              { letter: "O", title: "Openness" },
+              { letter: "N", title: "Nurturing" },
+              { letter: "N", title: "Negotiation" },
+              { letter: "E", title: "Empathy" },
+              { letter: "C", title: "Commitment" },
+              { letter: "T", title: "Trust" },
+            ].map((point, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col"
+                className="w-32 h-32 rounded-full bg-[#c9a66b]/20 backdrop-blur-sm flex items-center justify-center text-center hover:bg-[#c9a66b]/30 transition-all duration-300 border border-white/20"
               >
-                <div className="flex items-center mb-4">
-                  <span className="w-10 h-10 flex items-center justify-center bg-[#271E19] text-white rounded-full font-bold text-xl mr-3">
-                    {point.letter}
-                  </span>
-                  <h4 className="text-xl font-medium text-gray-900">
-                    {point.title}
-                  </h4>
+                <div>
+                  <div className="text-3xl font-bold mb-1">{point.letter}</div>
+                  <div className="text-sm">{point.title}</div>
                 </div>
-                <div className="h-px w-full bg-gray-200 mb-4"></div>
-                <p className="text-gray-600 flex-grow">{point.description}</p>
               </div>
             ))}
           </div>
-
-          {/* Add a call to action */}
-          <div className="mt-16 text-center">
-            <p className="text-gray-700 mb-6">
-              Ready to strengthen your relationship with our proven
-              C.O.N.N.E.C.T. approach?
-            </p>
+          <div className="text-center">
             <a
               href="https://calendly.com/thisismarriageuk"
               target="_blank"
-              className="inline-block px-8 py-3 rounded bg-[#271E19] text-white hover:bg-[#3a2c25] transition-colors duration-300"
+              className="inline-block px-6 py-3 bg-[#c9a66b] text-[#271E19] hover:bg-[#c9a66b]/90 transition-colors font-medium rounded"
             >
               Book a Consultation
             </a>
           </div>
         </div>
       </section>
-
-      {/* You might want to add a testimonial section here */}
     </div>
   );
 };

@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import Modal from "../components/Modal";
+import ScrollButton from "../components/ScrollButton";
 
 const TestimonialsPage: React.FC = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState<{
@@ -90,20 +91,28 @@ const TestimonialsPage: React.FC = () => {
   return (
     <div className="bg-[#f5f0e6]">
       {/* Hero Section */}
-      <section className="relative h-[60vh] bg-gradient-to-r from-[#86431a] to-[#271E19] text-white flex items-center justify-center text-center px-4">
-        <div>
+      <section className="relative h-[80vh] bg-gradient-to-r from-[#86431a] to-[#271E19] text-white flex items-center justify-center text-center px-4">
+        <div className="max-w-4xl flex flex-col items-center">
           <h1 className="font-serif text-4xl md:text-5xl font-medium mb-4">
             What Couples Say
           </h1>
-          <p className="text-lg md:text-xl font-light max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl font-light max-w-3xl mx-auto mb-10">
             Hear from couples and individuals who have transformed their
             relationships with our guidance.
           </p>
+          <ScrollButton
+            onClick={() => {
+              const nextSection = document.querySelector(".py-16");
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          />
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <div className="py-20">
+      <div className="py-16">
         <div className="container mx-auto px-4">
           {testimonials.map((group, index) => (
             <div key={index} className="mb-16">
