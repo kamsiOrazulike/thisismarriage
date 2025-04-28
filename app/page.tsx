@@ -116,17 +116,17 @@ export default function HomePage() {
               Our Services
             </h2>
             <p className="text-white/80 max-w-2xl mx-auto">
-              Specialized support for every stage of your relationship journey
+              Specialised support for every stage of your relationship journey
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
             <Card
               variant="feature"
-              title="Couples Therapy"
-              description="Navigate challenges together through evidence-based therapeutic approaches tailored to your relationship."
+              title="Marriage Coaching"
+              description="Reignite the spark in your relationship and rediscover the connection that brought you together."
               aspectRatio="square"
               imageSrc="/media/images/service-couples.jpg"
-              imageAlt="Couples Therapy"
+              imageAlt="Marriage Coaching"
             />
             <Card
               variant="feature"
@@ -135,14 +135,6 @@ export default function HomePage() {
               aspectRatio="square"
               imageSrc="/media/images/service-premarital.jpg"
               imageAlt="Premarital Counseling"
-            />
-            <Card
-              variant="feature"
-              title="Relationship Renewal"
-              description="Reignite the spark in your relationship and rediscover the connection that brought you together."
-              aspectRatio="square"
-              imageSrc="/media/images/service-renewal.jpg"
-              imageAlt="Relationship Renewal"
             />
           </div>
           <div className="text-center mt-12">
@@ -244,54 +236,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Courses Section */}
-      <section className="py-24 bg-[#f5f0e6]">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="aspect-w-16 aspect-h-9 relative rounded-lg shadow-xl overflow-hidden">
-                <div className="w-full h-full bg-gray-200 relative">
-                  {/* Placeholder for course image - replace with actual image */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-[#86431a]/10">
-                    <span className="text-[#86431a] font-serif text-2xl">
-                      Course Preview
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#c9a66b] rounded-md -z-10 rotate-6"></div>
-            </div>
-            <div>
-              <div className="w-32 h-1 bg-[#86431a] mb-6"></div>
-              <h2 className="font-serif text-4xl font-medium mb-6 text-[#3e2c1f]">
-                Our Courses
-              </h2>
-              <p className="text-[#3e2c1f]/80 mb-8 leading-relaxed text-lg">
-                Transform your relationship with our specialized courses
-                designed to help couples at every stage. From premarital
-                preparation to deepening long-term connections, our expert-led
-                programs provide practical tools and insights.
-              </p>
-              <Link
-                href="/courses"
-                className="inline-block px-6 py-3 bg-[#86431a] text-white hover:bg-[#86431a]/90 transition-colors font-medium rounded"
-              >
-                Explore Courses
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Products Section */}
-      <section className="py-24 bg-[#c9a66b]/20">
+      <section className="py-24 bg-[#f5f0e6]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
-            <h2 className="font-serif text-4xl font-medium mb-4 text-white">
-              Relationship Products
+            <h2 className="font-serif text-4xl font-medium mb-4 text-[#271E19]">
+              Our Products
             </h2>
-            <p className="text-white/80 max-w-2xl mx-auto">
+            <p className="text-[#271E19]/80 max-w-2xl mx-auto">
               Tools and resources to strengthen your connection at home
             </p>
           </div>
@@ -338,7 +291,7 @@ export default function HomePage() {
                   </span>
                   <Link
                     href="/products"
-                    className="px-4 py-2 bg-[#86431a]/10 text-[#86431a] hover:bg-[#86431a] hover:text-white rounded transition-colors duration-300"
+                    className="px-4 py-2 bg-[#271E19]/10 text-[#271E19] hover:bg-[#271E19] hover:text-white rounded transition-colors duration-300"
                   >
                     View Details
                   </Link>
@@ -386,7 +339,7 @@ export default function HomePage() {
                   </span>
                   <Link
                     href="/products"
-                    className="px-4 py-2 bg-[#86431a]/10 text-[#86431a] hover:bg-[#86431a] hover:text-white rounded transition-colors duration-300"
+                    className="px-4 py-2 bg-[#271E19]/10 text-[#271E19] hover:bg-[#271E19] hover:text-white rounded transition-colors duration-300"
                   >
                     View Details
                   </Link>
@@ -434,7 +387,7 @@ export default function HomePage() {
                   </span>
                   <Link
                     href="/products"
-                    className="px-4 py-2 bg-[#86431a]/10 text-[#86431a] hover:bg-[#86431a] hover:text-white rounded transition-colors duration-300"
+                    className="px-4 py-2 bg-[#271E19]/10 text-[#271E19] hover:bg-[#271E19] hover:text-white rounded transition-colors duration-300"
                   >
                     View Details
                   </Link>
@@ -446,7 +399,7 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <Link
               href="/products"
-              className="inline-block px-6 py-3 border-2 border-[#c9a66b] text-[#c9a66b] hover:bg-[#c9a66b]/10 rounded transition-colors duration-300 font-medium"
+              className="inline-block px-6 py-3 border-2 border-[#271E19] text-[#271E19] hover:bg-[#271E19]/10 rounded transition-colors duration-300 font-medium"
             >
               View All Products
             </Link>
@@ -459,7 +412,9 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
-            <h2 className="font-serif text-4xl font-medium mb-4">Success Stories</h2>
+            <h2 className="font-serif text-4xl font-medium mb-4">
+              Success Stories
+            </h2>
             <p className="text-white/80 max-w-2xl mx-auto">
               Hear from couples who have transformed their relationships
             </p>
@@ -467,9 +422,9 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-[#f5f0e6] p-8 rounded-lg shadow-lg border border-[#c9a66b]/50">
               <blockquote className="text-xl text-[#3e2c1f]/80 italic mb-6">
-                "The work of Wanitta and Curtis through This is Marriage has been a
-                priceless gift in my life as a husband and father and my marriage
-                relationship."
+                "The work of Wanitta and Curtis through This is Marriage has
+                been a priceless gift in my life as a husband and father and my
+                marriage relationship."
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 rounded-full bg-[#c9a66b]/50 mr-4"></div>

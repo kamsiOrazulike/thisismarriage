@@ -15,7 +15,6 @@ export default function Navbar() {
     if (pathname === "/") return "home";
     if (pathname === "/about") return "about";
     if (pathname === "/services") return "services";
-    if (pathname === "/courses") return "courses";
     if (pathname === "/products") return "products";
     if (pathname === "/testimonials") return "testimonials";
     return "home";
@@ -164,7 +163,6 @@ function NavLinks({
     { href: "/", label: "Home", type: "home" },
     { href: "/about", label: "About", type: "about" },
     { href: "/services", label: "Services", type: "services" },
-    { href: "/courses", label: "Courses", type: "courses" },
     { href: "/products", label: "Products", type: "products" },
     { href: "/testimonials", label: "Testimonials", type: "testimonials" },
   ];

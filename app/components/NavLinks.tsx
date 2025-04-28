@@ -44,10 +44,16 @@ export default function NavLinks({
         Services
       </button>
       <button
-        onClick={() => onNavigate("courses")}
-        className={`${currentPage === "courses" ? activeClass : baseClass}`}
+        onClick={() => onNavigate("products")}
+        className={`${currentPage === "products" ? activeClass : baseClass}`}
       >
-        Courses
+        Products
+      </button>
+      <button
+        onClick={() => onNavigate("testimonials")}
+        className={`${currentPage === "testimonials" ? activeClass : baseClass}`}
+      >
+        Testimonials
       </button>
     </>
   );

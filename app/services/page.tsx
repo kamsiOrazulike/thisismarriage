@@ -154,7 +154,7 @@ const ServicesPage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <section className="py-24 bg-[#86431a] text-white text-center">
+      <section className="py-24 bg-gradient-to-r from-[#86431a]/95 to-[#271E19]/95 text-white text-center">
         <div className="container mx-auto px-4">
           <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
           <h2 className="font-serif text-4xl font-medium mb-6">

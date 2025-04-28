@@ -31,7 +31,7 @@ const CoursesPage: React.FC = () => {
               Our Courses
             </h1>
             <p className="text-md md:text-xl font-light max-w-3xl mx-auto mb-10">
-              Discover our specialized courses designed to strengthen relationships at every stage.
+              Discover our specialised courses designed to strengthen relationships at every stage.
             </p>
             <ScrollButton onClick={handleScrollDown} />
           </div>
