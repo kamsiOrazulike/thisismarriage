@@ -1,11 +1,10 @@
 "use client";
-import { PageType } from "./PageManager";
 
 interface NavLinksProps {
   isScrolled?: boolean;
   isMobile?: boolean;
-  currentPage: PageType;
-  onNavigate: (page: PageType) => void;
+  currentPage: string;
+  onNavigate: (page: string) => void;
 }
 
 export default function NavLinks({

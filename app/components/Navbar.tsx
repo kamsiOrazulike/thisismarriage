@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { PageType } from "./PageManager";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -12,7 +11,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   // Determine current page based on pathname
-  const getCurrentPage = (): PageType => {
+  const getCurrentPage = (): string => {
     if (pathname === "/") return "home";
     if (pathname === "/about") return "about";
     if (pathname === "/services") return "services";
@@ -33,7 +32,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavigate = (page: PageType) => {
+  const handleNavigate = (page: string) => {
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
@@ -138,8 +137,8 @@ export default function Navbar() {
 interface NavLinksProps {
   isScrolled?: boolean;
   isMobile?: boolean;
-  currentPage: PageType;
-  onNavigate: (page: PageType) => void;
+  currentPage: string;
+  onNavigate: (page: string) => void;
 }
 
 function NavLinks({
@@ -162,12 +161,12 @@ function NavLinks({
 
   // Links configuration
   const links = [
-    { href: "/", label: "Home", type: "home" as PageType },
-    { href: "/about", label: "About", type: "about" as PageType },
-    { href: "/services", label: "Services", type: "services" as PageType },
-    { href: "/courses", label: "Courses", type: "courses" as PageType },
-    { href: "/products", label: "Products", type: "products" as PageType },
-    { href: "/testimonials", label: "Testimonials", type: "testimonials" as PageType },
+    { href: "/", label: "Home", type: "home" },
+    { href: "/about", label: "About", type: "about" },
+    { href: "/services", label: "Services", type: "services" },
+    { href: "/courses", label: "Courses", type: "courses" },
+    { href: "/products", label: "Products", type: "products" },
+    { href: "/testimonials", label: "Testimonials", type: "testimonials" },
   ];
 
   return (
