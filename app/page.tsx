@@ -32,11 +32,11 @@ export default function HomePage() {
             controlsList="nodownload nofullscreen noremoteplayback"
             className="w-full h-full object-cover"
           >
-            <source src="/media/videos/background-video.mp4" type="video/mp4" />
+            <source src="/media/videos/background-video-2.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
-        <div className="relative z-10 flex items-center justify-center h-full text-white text-center px-4">
+        <div className="relative z-10  mt-8 flex items-center justify-center h-full text-white text-center px-4">
           <div className="max-w-4xl flex flex-col items-center">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium mb-4">
               Empower Your Relationship
@@ -125,7 +125,7 @@ export default function HomePage() {
               title="Marriage Coaching"
               description="Reignite the spark in your relationship and rediscover the connection that brought you together."
               aspectRatio="square"
-              imageSrc="/media/images/service-couples.jpg"
+              imageSrc="/media/images/couples1.jpg"
               imageAlt="Marriage Coaching"
             />
             <Card

@@ -40,7 +40,7 @@ const ServicesPage: React.FC = () => {
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
           <div className="relative h-96 w-full">
             <Image
-              src="/media/images/service-couples.jpg"
+              src="/media/images/couples1.jpg"
               alt="Married Couples Coaching"
               fill
               style={{ objectFit: "cover" }}
@@ -100,7 +100,7 @@ const ServicesPage: React.FC = () => {
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
           <div className="relative h-96 w-full">
             <Image
-              src="/media/images/service-renewal.jpg"
+              src="/media/images/couples2.jpg"
               alt="Quarterly Face-to-Face Meetup"
               fill
               style={{ objectFit: "cover" }}
@@ -143,7 +143,7 @@ const ServicesPage: React.FC = () => {
           </div>
           <div className="relative h-96 w-full order-1 md:order-2">
             <Image
-              src="/media/images/service-couples.jpg"
+              src="/media/images/couples3.jpg"
               alt="Online 'Relationship Rooms'"
               fill
               style={{ objectFit: "cover" }}
