@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
@@ -149,6 +148,81 @@ const AboutPage: React.FC = () => {
             >
               Book a Consultation
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Our live talks */}
+      <section className="py-24 bg-[#f5f0e6] relative overflow-hidden">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="w-32 h-1 bg-[#3e2c1f] mx-auto mb-6"></div>
+          <h2 className="text-[#3e2c1f] font-serif text-4xl font-medium mb-6">
+            Our Live Talks
+          </h2>
+          <p className="text-[#3e2c1f]/80">
+            Join us for engaging discussions on love, relationships, and
+            everything in between. Our live talks are designed to foster
+            meaningful conversations and provide valuable insights into the
+            complexities of relationships.
+          </p>
+        </div>
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-12 mb-20">
+          <div className="order-2 md:order-1">
+            <p className="bg-[#3e2c1f]/30 px-4 py-2 rounded-full mb-8 text-sm font-medium text-[#3e2c1f] border border-[#3e2c1f]/20 uppercase inline-block w-auto">
+              Ongoing
+            </p>
+            <h2 className="font-serif text-4xl font-medium mb-4 text-[#3e2c1f]">
+              “Where Are the Men?” Symposium
+            </h2>
+            <p className="text-[#3e2c1f]/80 mb-6 leading-relaxed text-lg">
+              Exploring Relationship Perspectives and Challenges within Faith
+              Communities, Where Men May Be Outnumbered. Are you seeking to
+              understand the challenges men face in relationships, especially
+              within faith communities? The “Where Are the Men?” Symposium is a
+              unique event that addresses the importance of male involvement in
+              relationships and faith-based communities. Join us for an
+              experience that encourages men to engage, grow, and support their
+              relationships, and empowers women to be a part of the strategy in
+              locating them.
+            </p>
+            <a
+              href="#"
+              className="inline-block px-6 py-3 bg-[#86431a] text-white hover:bg-[#86431a]/90 transition-colors font-medium rounded"
+            >
+              View Details
+            </a>
+          </div>
+          <div className="flex flex-row relative order-1 md:order-2">
+            <Image
+              src="/media/images/WATM3.png"
+              alt="Symposium"
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: "32%", height: "auto", margin: "0 auto" }}
+              className="rounded-lg shadow-lg"
+              draggable={false}
+            />
+            <Image
+              src="/media/images/WATM2.png"
+              alt="Symposium"
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: "32%", height: "auto", margin: "0 auto" }}
+              className="rounded-lg shadow-lg"
+              draggable={false}
+            />
+            <Image
+              src="/media/images/WATM1.png"
+              alt="Symposium"
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: "32%", height: "auto", margin: "0 auto" }}
+              className="rounded-lg shadow-lg"
+              draggable={false}
+            />
           </div>
         </div>
       </section>
