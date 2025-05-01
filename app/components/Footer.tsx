@@ -76,7 +76,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               Get in Touch
             </h3>
             <address className="not-italic text-[#f5f0e6] space-y-2">
-              <p className="pt-2">contact@thisismarriage.com</p>
+              <p className="pt-2">contact@thisismarriage.co.uk</p>
               <p>(+44) 123 4567 899</p>
             </address>
           </div>

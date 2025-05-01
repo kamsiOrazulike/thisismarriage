@@ -36,7 +36,38 @@ const ServicesPage: React.FC = () => {
 
       {/* Service Sections */}
       <div className="py-20 bg-white">
-        {/* Service 1 */}
+
+          {/* Service 1 */}
+          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+          <div className="order-2 md:order-1">
+            <h2 className="font-serif text-4xl font-medium mb-4 text-[#3e2c1f]">
+              Premarital & Singles Coaching
+            </h2>
+            <p className="text-[#3e2c1f]/80 mb-6 leading-relaxed text-lg">
+              We offer pre-marital coaching and courses for those contemplating
+              marriage. Be prepared to address the questions that could
+              potentially arise in marriage. Feel prepared to walk into marriage
+              with a better knowledge of expectations.
+            </p>
+            <a
+              href="#"
+              className="inline-block px-6 py-3 bg-[#86431a] text-white hover:bg-[#86431a]/90 transition-colors font-medium rounded"
+            >
+              Book Here
+            </a>
+          </div>
+          <div className="relative h-96 w-full order-1 md:order-2">
+            <Image
+              src="/media/images/service-premarital.jpg"
+              alt="Premarital & Singles Coaching"
+              fill
+              style={{ objectFit: "cover" }}
+              className="rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
+
+        {/* Service 2 */}
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
           <div className="relative h-96 w-full">
             <Image
@@ -66,62 +97,7 @@ const ServicesPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Service 2 */}
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
-          <div className="order-2 md:order-1">
-            <h2 className="font-serif text-4xl font-medium mb-4 text-[#3e2c1f]">
-              Premarital & Singles Coaching
-            </h2>
-            <p className="text-[#3e2c1f]/80 mb-6 leading-relaxed text-lg">
-              We offer pre-marital coaching and courses for those contemplating
-              marriage. Be prepared to address the questions that could
-              potentially arise in marriage. Feel prepared to walk into marriage
-              with a better knowledge of expectations.
-            </p>
-            <a
-              href="#"
-              className="inline-block px-6 py-3 bg-[#86431a] text-white hover:bg-[#86431a]/90 transition-colors font-medium rounded"
-            >
-              Book Here
-            </a>
-          </div>
-          <div className="relative h-96 w-full order-1 md:order-2">
-            <Image
-              src="/media/images/service-premarital.jpg"
-              alt="Premarital & Singles Coaching"
-              fill
-              style={{ objectFit: "cover" }}
-              className="rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
-
         {/* Service 3 */}
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
-          <div className="relative h-96 w-full">
-            <Image
-              src="/media/images/couples2.jpg"
-              alt="Quarterly Face-to-Face Meetup"
-              fill
-              style={{ objectFit: "cover" }}
-              className="rounded-lg shadow-lg"
-            />
-          </div>
-          <div>
-            <h2 className="font-serif text-4xl font-medium mb-4 text-[#3e2c1f]">
-              Quarterly Face-to-Face Meetup
-            </h2>
-            <p className="text-[#3e2c1f]/80 mb-6 leading-relaxed text-lg">
-              Attend in-person events held quarterly, where couples can connect
-              with others, participate in interactive activities, and benefit
-              from the guidance of our facilitators in a group setting. These
-              meetups offer an opportunity for couples to learn, socialize, and
-              build a support network.
-            </p>
-          </div>
-        </div>
-
-        {/* Service 4 */}
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
           <div className="order-2 md:order-1">
             <h2 className="font-serif text-4xl font-medium mb-4 text-[#3e2c1f]">
