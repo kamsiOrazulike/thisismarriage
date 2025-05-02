@@ -67,7 +67,7 @@ const ProductsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Product 2 */}
+        {/* Product 2 - Modified Image Container */}
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
           <div className="order-2 md:order-1">
             <h2 className="font-serif text-4xl font-medium mb-4 text-[#3e2c1f]">
@@ -77,7 +77,7 @@ const ProductsPage: React.FC = () => {
               Relationships require continuous effort and open communication.
               Our Relationship Cards offer thoughtful questions and activities
               designed to help couples address challenges, improve intimacy, and
-              refine communication. It’s a simple yet powerful way to nurture
+              refine communication. It's a simple yet powerful way to nurture
               your relationship daily.
             </p>
             <a
@@ -87,9 +87,9 @@ const ProductsPage: React.FC = () => {
               View Details
             </a>
           </div>
-          <div className="relative h-96 w-full order-1 md:order-2">
+          <div className="relative aspect-[3/4] w-80 order-1 md:order-2">
             <Image
-              src="/media/images/service-couples.jpg"
+              src="/media/images/cards.png"
               alt="Relationship Cards"
               fill
               style={{ objectFit: "cover" }}
