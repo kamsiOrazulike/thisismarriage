@@ -4,6 +4,7 @@
 import React from "react";
 import Image from "next/image";
 import ScrollButton from "../components/ScrollButton";
+import ConnectModelSection from "../../components/ConnectModelSection";
 
 const AboutPage: React.FC = () => {
   const handleScrollDown = () => {
@@ -87,70 +88,7 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* CONNECT Model Section */}
-      <section className="py-24 bg-gradient-to-r from-[#86431a]/95 to-[#271E19]/95 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern
-                id="grid"
-                width="40"
-                height="40"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M 40 0 L 0 0 0 40"
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="1"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <div className="w-32 h-1 bg-[#c9a66b] mx-auto mb-6"></div>
-            <h2 className="font-serif text-4xl font-medium mb-6">
-              The C.O.N.N.E.C.T. Model
-            </h2>
-            <p className="text-white/80">
-              Our proven approach to building lasting connections and
-              strengthening relationships
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {[
-              { letter: "C", title: "Communication" },
-              { letter: "O", title: "Openness" },
-              { letter: "N", title: "Nurturing" },
-              { letter: "N", title: "Negotiation" },
-              { letter: "E", title: "Empathy" },
-              { letter: "C", title: "Commitment" },
-              { letter: "T", title: "Trust" },
-            ].map((point, index) => (
-              <div
-                key={index}
-                className="w-32 h-32 rounded-full bg-[#c9a66b]/20 backdrop-blur-sm flex items-center justify-center text-center hover:bg-[#c9a66b]/30 transition-all duration-300 border border-white/20"
-              >
-                <div>
-                  <div className="text-3xl font-bold mb-1">{point.letter}</div>
-                  <div className="text-sm">{point.title}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center">
-            <a
-              href="https://calendly.com/thisismarriageuk"
-              target="_blank"
-              className="inline-block px-6 py-3 bg-[#c9a66b] text-[#271E19] hover:bg-[#c9a66b]/90 transition-colors font-medium rounded"
-            >
-              Book a Consultation
-            </a>
-          </div>
-        </div>
-      </section>
+      <ConnectModelSection />
 
       {/* Our live talks */}
       <section className="py-24 bg-[#f5f0e6] relative overflow-hidden">
