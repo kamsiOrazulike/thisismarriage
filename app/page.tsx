@@ -32,7 +32,10 @@ export default function HomePage() {
             controlsList="nodownload nofullscreen noremoteplayback"
             className="w-full h-full object-cover"
           >
-            <source src="/media/videos/background-video-2.mp4" type="video/mp4" />
+            <source
+              src="/media/videos/background-video-2.mp4"
+              type="video/mp4"
+            />
           </video>
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
@@ -46,21 +49,21 @@ export default function HomePage() {
               for marriage, and guide singles toward forming healthy
               partnerships."
             </p>
-            <div className="flex gap-4 mb-12">
+            <div className="flex flex-col gap-4 mb-12">
               <Link
-                href="/services"
+                href="/the-relationship-room"
                 className="px-6 py-3 bg-[#86431a] hover:bg-[#86431a]/90 text-white rounded transition-colors duration-300 font-medium"
               >
-                Our Services
+                The Relationship Room
               </Link>
-              <a
+              {/* <a
                 href="https://calendly.com/thisismarriageuk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 border-2 border-[#c9a66b] text-[#c9a66b] hover:bg-[#c9a66b]/10 rounded transition-colors duration-300 font-medium"
               >
                 Book a Session
-              </a>
+              </a> */}
             </div>
             <ScrollButton onClick={handleScrollDown} />
           </div>
@@ -130,11 +133,11 @@ export default function HomePage() {
             />
             <Card
               variant="feature"
-              title="Premarital Counseling"
+              title="Premarital Coaching"
               description="Build a strong foundation for your marriage by addressing potential issues before they arise."
               aspectRatio="square"
               imageSrc="/media/images/service-premarital.jpg"
-              imageAlt="Premarital Counseling"
+              imageAlt="Premarital Coaching"
             />
           </div>
           <div className="text-center mt-12">
