@@ -29,14 +29,14 @@ const RelationshipRoomPage: React.FC = () => {
             <p className="text-lg md:text-xl font-light max-w-3xl mx-auto mb-10">
               Join interactive group sessions hosted by our facilitators online
             </p>
-            <a
-              href="#"
+            <Link
+              href="https://stan.store/TIMUK"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 bg-white text-[#86431a] hover:bg-gray-100 rounded text-lg font-medium transition-colors mb-8"
             >
               Join our Relationship Rooms now
-            </a>
+            </Link>
             <ScrollButton onClick={handleScrollDown} />
           </div>
         </div>
@@ -224,14 +224,14 @@ const RelationshipRoomPage: React.FC = () => {
             supportive group environment.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="#"
+            <Link
+              href="https://stan.store/TIMUK"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 bg-white text-[#86431a] hover:bg-gray-100 rounded text-lg font-medium transition-colors"
             >
               Join our Relationship Rooms now
-            </a>
+            </Link>
             <Link
               href="/services"
               className="px-8 py-3 bg-transparent border-2 border-white text-white hover:bg-white/10 rounded text-lg font-medium transition-colors"

@@ -51,19 +51,19 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col gap-4 mb-12">
               <Link
-                href="/the-relationship-room"
-                className="px-6 py-3 bg-[#86431a] hover:bg-[#86431a]/90 text-white rounded transition-colors duration-300 font-medium"
-              >
-                The Relationship Room
-              </Link>
-              {/* <a
-                href="https://calendly.com/thisismarriageuk"
+                href="https://stan.store/TIMUK"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border-2 border-[#c9a66b] text-[#c9a66b] hover:bg-[#c9a66b]/10 rounded transition-colors duration-300 font-medium"
+                className="px-6 py-3 bg-[#86431a] hover:bg-[#86431a]/90 text-white rounded transition-colors duration-300 font-medium"
               >
-                Book a Session
-              </a> */}
+                Join our Relationship Rooms
+              </Link>
+              <Link
+                href="/the-relationship-room"
+                className="text-white/60 hover:text-white transition-colors duration-300 font-medium text-sm"
+              >
+                About Relationship rooms
+              </Link>
             </div>
             <ScrollButton onClick={handleScrollDown} />
           </div>
